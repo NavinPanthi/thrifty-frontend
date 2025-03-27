@@ -1,0 +1,42 @@
+{
+  "singleQuote": false,
+  "bracketSpacing": true,
+  "tabWidth": 2,
+  "semi": true,
+  "trailingComma": "es5",
+  "importOrder": [
+    "^(react/(.*)$)|^(react$)",
+    "^(react-router-dom)",
+    "^(@tanstack/(.*)$)",
+    "^(@reduxjs/(.*)$)|^(redux-(.*)$)|^(react-redux)",
+    "",
+    "<THIRD_PARTY_MODULES>",
+    "",
+    "^@/pages(.*)$",
+    "^@/features(.*)$",
+    "^@/components(.*)$",
+    "^@/hoc(.*)$",
+    "^@/layout(.*)$",
+    "^@/navigation(.*)$",
+    "^@/assets(.*)$",
+    "",
+    "^@/hooks(.*)$",
+    "^@/redux(.*)$",
+    "^@/utils(.*)$",
+    "^@/lib(.*)$",
+    "^@/contants(.*)$",
+    "",
+    "^(?!.*[.]css$)[./].*$",
+    "",
+    "^types$",
+    "^@/@types(.*)$",
+    "",
+    "^@/services/(.*)$",
+    ".css$"
+  ],
+  "importOrderSeparation": true,
+  "plugins": [
+    "@ianvs/prettier-plugin-sort-imports",
+    "prettier-plugin-tailwindcss"
+  ]
+}

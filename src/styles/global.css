@@ -1,0 +1,351 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  --core-primary: #1890ff;
+  --core-primary-light: #1890ff14;
+
+  --neutral-50: #f8fafc;
+  --neutral-100: #f1f5f9;
+  --neutral-200: #e2e8f0;
+  --neutral-300: #cbd5e1;
+  --neutral-400: #94a3bb;
+  --neutral-500: #64748b;
+  --neutral-600: #475569;
+  --neutral-700: #334155;
+  --neutral-800: #1e293b;
+  --neutral-900: #0f172a;
+
+  --supporting-warning: #fdb22f;
+  --supporting-warning-light: #fff9ef;
+  --supporting-error: #d12e24;
+  --supporting-error-light: #fbefef;
+  --supporting-success: #317d35;
+  --supporting-success-light: #eff5ef;
+  --supporting-info: #146dfc;
+  --supporting-info-light: #eff1f5;
+
+  --shade-light: #ffffff;
+  --shade-dark: #000000;
+
+  --message: #808080;
+}
+
+/* Reset default input styles */
+@layer base {
+  *:focus-visible {
+    outline: 2px solid var(--core-primary);
+  }
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0; /* Remove the default margin */
+  }
+
+  input[type="range"] {
+    /* removing default appearance */
+    -webkit-appearance: none;
+    appearance: none;
+    /* creating a custom design */
+    width: 100%;
+    cursor: pointer;
+    outline: none;
+    /*  slider progress trick  */
+    overflow: hidden;
+    border-radius: 16px;
+  }
+
+  /* Track: webkit browsers */
+  input[type="range"]::-webkit-slider-runnable-track {
+    height: 16px;
+    background: #e5e5e5;
+    border-radius: 6px;
+  }
+
+  /* Track: Mozilla Firefox */
+  input[type="range"]::-moz-range-track {
+    height: 16px;
+    background: #e5e5e5;
+    border-radius: 6px;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    /* removing default appearance */
+    -webkit-appearance: none;
+    appearance: none;
+    /* creating a custom design */
+    height: 16px;
+    width: 16px;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 2px solid #146dfc;
+    box-shadow: -407px 0 0 400px #146dfc;
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    height: 16px;
+    width: 16px;
+    background-color: #fff;
+    border-radius: 50%;
+
+    border: 2px solid #146dfc;
+    box-shadow: -407px 0 0 400px #146dfc;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  /* Base HTML elements */
+  html {
+    font-family: "figtree", "san-serif";
+    scroll-behavior: smooth;
+  }
+
+  /* Table styles */
+  tr {
+    @apply px-5 text-sm font-medium tracking-[0.02em] text-neutral-700;
+  }
+
+  tbody > tr {
+    @apply hover:bg-neutral-50;
+  }
+
+  td {
+    @apply px-5 py-4;
+  }
+
+  th {
+    @apply px-5 py-3 font-semibold text-neutral-600;
+  }
+
+  thead {
+    @apply bg-neutral-50;
+  }
+}
+
+/* Utility classes */
+.popup-shadow {
+  box-shadow: 0px 8px 32px -4px #00000024;
+}
+
+#connectMessage {
+  scroll-behavior: smooth;
+}
+
+/* Scrollbar styles */
+.hidden-scrollbar::-webkit-scrollbar,
+.drawer-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.bar::-webkit-scrollbar,
+.fiscalYearbar::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.bar::-webkit-scrollbar-track,
+.fiscalYearbar::-webkit-scrollbar-track {
+  background: #e5e5e5;
+  border-radius: 50px;
+}
+
+.bar::-webkit-scrollbar-thumb,
+.fiscalYearbar::-webkit-scrollbar-thumb {
+  background: #808080;
+  border-radius: 50px;
+}
+
+/* Calendar button overrides */
+.fc-button-group > .fc-button-primary:focus,
+.fc-prev-button:focus,
+.fc-button:focus {
+  box-shadow: none !important;
+}
+
+/* Date range picker customization */
+.rdrDefinedRangesWrapper {
+  display: none;
+}
+
+.rdrDateRangeWrapper {
+  width: 100%;
+}
+
+.rdrMonth {
+  width: 50%;
+}
+
+.min-h-inherit {
+  min-height: inherit;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+.acc{
+  background-color: #000000;
+}
+/* Component styles */
+@layer components {
+  /* Form elements */
+  /* .input {
+    @apply block w-full rounded-md border border-neutral-200 px-2 py-3 text-sm font-normal outline-none focus:border-core-primary;
+  } */
+
+  .label {
+    @apply mb-2 block font-medium tracking-[-0.16px] text-neutral-800;
+  }
+
+  /* Typography */
+  .title-group {
+    @apply text-sm font-semibold leading-[20px] tracking-[-0.21px];
+  }
+
+  .title-body {
+    @apply text-lg font-semibold;
+  }
+
+  .body-large {
+    @apply leading-6 tracking-[-0.32px];
+  }
+
+  .body-default {
+    @apply text-sm leading-[22px] tracking-[-0.175px];
+  }
+
+  .body-default-semibold {
+    @apply text-sm font-semibold leading-[22px] tracking-[-0.175px];
+  }
+
+  .body-small {
+    @apply text-xs leading-5 tracking-[-0.24px];
+  }
+
+  /* Button variants */
+  .primary-btn {
+    @apply title-body w-full rounded-full bg-core-primary px-3 py-3 text-base text-shade-light disabled:cursor-not-allowed disabled:bg-core-primary/60;
+  }
+
+  .primary-btn-rounded-md {
+    @apply body-large rounded-xl bg-core-primary px-5 py-[10px] font-medium text-white disabled:cursor-not-allowed disabled:bg-core-primary/60;
+  }
+
+  .primary-btn-rounded-md-outline {
+    @apply body-large rounded-xl border-2 border-core-primary bg-white px-5 py-[10px] font-medium text-core-primary;
+  }
+
+  /* Additional button styles */
+  .primary-btn-default {
+    @apply w-fit rounded-full bg-core-primary px-[10px] py-[5px] text-sm font-semibold text-shade-light;
+  }
+
+  .primary-btn-lg {
+    @apply title-body bg-core-primary px-8 py-3;
+  }
+
+  .primary-btn-sm {
+    @apply body-default-semibold bg-core-primary px-[10px] py-[7px];
+  }
+
+  .danger-btn-rounded-md {
+    @apply body-large rounded-xl bg-supporting-error px-5 py-[10px] font-medium text-white disabled:cursor-not-allowed disabled:bg-supporting-error/60;
+  }
+
+  .danger-btn-rounded-full {
+    @apply body-large rounded-full bg-supporting-error px-5 py-[10px] font-medium text-white disabled:cursor-not-allowed disabled:bg-supporting-error/60;
+  }
+
+  /* Secondary buttons */
+  .secondary-btn {
+    @apply primary-btn bg-neutral-50 text-neutral-800 disabled:cursor-not-allowed disabled:bg-neutral-50/50;
+  }
+
+  .secondary-btn-md {
+    @apply rounded-full border-2 border-core-primary px-2 py-[10px] text-core-primary;
+  }
+
+  .secondary-btn-rounded-md {
+    @apply body-large rounded-xl border-2 border-core-primary px-5 py-[10px] font-medium text-core-primary;
+  }
+
+  /* Delete buttons */
+  .trash-btn {
+    @apply text-supporting-error;
+  }
+
+  .del-btn {
+    @apply primary-btn bg-supporting-error;
+  }
+
+  /* Typography variants */
+  .title-screen {
+    @apply text-3xl font-semibold;
+  }
+
+  .title-section {
+    @apply text-xl font-bold lg:text-[26px];
+  }
+
+  .title-sub-section {
+    @apply text-[22px] font-bold;
+  }
+
+  /* Link styles */
+  .link-large {
+    @apply font-semibold underline;
+  }
+
+  .link-default {
+    @apply text-sm font-semibold underline;
+  }
+
+  .link-small {
+    @apply text-sm font-semibold;
+  }
+
+  /* Badge variants */
+  .accepted-badge {
+    @apply body-default-semibold w-fit rounded-2xl bg-supporting-success-light px-5 py-1.5 text-sm text-supporting-success;
+  }
+
+  .pending-badge {
+    @apply body-default-semibold w-fit rounded-2xl bg-supporting-warning-light px-5 py-1.5 text-sm text-supporting-warning;
+  }
+
+  .danger-badge {
+    @apply body-default-semibold rounded-full bg-supporting-error-light px-3 py-1 text-supporting-error;
+  }
+
+  .info-badge {
+    @apply body-default rounded-full bg-supporting-info px-3 py-1 text-supporting-info-light;
+  }
+
+  /* Other components */
+  .architecture-card {
+    @apply absolute bottom-2 left-0 flex w-full items-center justify-center gap-2;
+  }
+
+  .vendor-badge {
+    @apply m-0.5 inline-block h-[32px] w-fit rounded-[9999px] bg-neutral-100 px-3 py-[5px] text-center text-neutral-800;
+  }
+
+  .active-nav-underline {
+    @apply font-medium !text-core-primary after:absolute after:bottom-0 after:left-1/2 after:h-[3px] after:w-[70%] after:-translate-x-1/2 after:bg-core-primary after:content-[''];
+  }
+
+  .required {
+    @apply text-sm text-supporting-error;
+  }
+}
