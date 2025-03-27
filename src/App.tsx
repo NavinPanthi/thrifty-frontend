@@ -1,5 +1,7 @@
 // import Router from "./router/router";
 
+import Landing from "./pages/landing";
+
 // import "react-date-range/dist/styles.css";
 // import "react-date-range/dist/theme/default.css";
 // import "react-phone-number-input/style.css";
@@ -33,7 +35,7 @@ function App() {
           },
         }}
       /> */}
-      <p className="bg-black">dede</p>
+      <Landing />
     </>
   );
 }
