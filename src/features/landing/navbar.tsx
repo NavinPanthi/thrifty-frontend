@@ -19,7 +19,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="mx-4 flex h-32 items-center justify-between tracking-widest lg:mx-28">
+    <nav className="sticky top-0 z-50 flex h-28 items-center justify-between border-b bg-white px-4 tracking-widest lg:px-28">
       <a
         className="leading border border-black px-10 py-3 text-3xl uppercase"
         href="/"

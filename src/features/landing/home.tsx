@@ -10,7 +10,7 @@ const Home = () => {
   };
 
   return (
-    <div className="relative h-[calc(100vh-128px)] w-full">
+    <div className="relative h-[calc(100vh-112px)] w-full">
       <img
         src="/clothes.jpg"
         alt="Background"
