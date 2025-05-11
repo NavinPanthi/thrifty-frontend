@@ -10,16 +10,22 @@ const Navbar = () => {
     ];
     return tabs.map((tab) => (
       <li key={tab.id} className="nav-item">
-        {tab.title ? tab.title : tab.icon}
+        <a className="hover:cursor-pointer">
+          {" "}
+          {tab.title ? tab.title : tab.icon}
+        </a>
       </li>
     ));
   };
 
   return (
-    <nav className="mx-32 flex h-32 items-center justify-between tracking-widest">
-      <div className="leading border border-black px-10 py-3 text-3xl uppercase">
+    <nav className="mx-4 flex h-32 items-center justify-between tracking-widest lg:mx-28">
+      <a
+        className="leading border border-black px-10 py-3 text-3xl uppercase"
+        href="/"
+      >
         Thrifty
-      </div>
+      </a>
       <ul className="flex items-center gap-10 uppercase">{renderTabs()}</ul>
     </nav>
   );

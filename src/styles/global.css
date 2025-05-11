@@ -1,4 +1,5 @@
 
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -108,9 +109,11 @@
 
   /* Base HTML elements */
   html {
-    font-family: "figtree", "san-serif";
     scroll-behavior: smooth;
   }
+  body {
+    @apply font-sans;
+  }  
 
   /* Table styles */
   tr {
@@ -330,15 +333,6 @@
 
   .info-badge {
     @apply body-default rounded-full bg-supporting-info px-3 py-1 text-supporting-info-light;
-  }
-
-  /* Other components */
-  .architecture-card {
-    @apply absolute bottom-2 left-0 flex w-full items-center justify-center gap-2;
-  }
-
-  .vendor-badge {
-    @apply m-0.5 inline-block h-[32px] w-fit rounded-[9999px] bg-neutral-100 px-3 py-[5px] text-center text-neutral-800;
   }
 
   .active-nav-underline {
