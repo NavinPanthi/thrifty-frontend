@@ -3,7 +3,7 @@ import { Coins01Icon, DeliveryTruck01Icon, VestIcon } from "hugeicons-react";
 // Main Component
 function FeaturesSection() {
   return (
-    <div className="mx-4 flex items-center justify-between py-10 lg:mx-28">
+    <div className="flex flex-col items-center justify-around gap-10 px-4 py-28 sm:flex-row lg:px-28">
       {/* Payment Column */}
       <div className="flex flex-col items-center">
         <div className="mb-4 text-supporting-success/30">
@@ -31,7 +31,7 @@ function FeaturesSection() {
         </div>
         <h3 className="mb-2 text-lg">VARAIBILITY</h3>
         <p className="max-w-48 text-center text-sm text-gray-600">
-          Different types of clothes with cheap exercise.
+          Get different types of clothes cheaply.
         </p>
       </div>
     </div>

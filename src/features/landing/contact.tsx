@@ -63,10 +63,10 @@ const Contact = () => {
           </form>
         </div>
 
-        <div className="h-72 md:h-full">
+        <div className="h-full w-full">
           <iframe
             title="Google map"
-            className="overflow-hidden"
+            className="w-full overflow-hidden"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7030.949967099431!2d83.98790894999999!3d28.223259549999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3995944f019fb07f%3A0x1cd9511d39c8dfc9!2sChipledhunga%2C%20Pokhara%2033700!5e0!3m2!1sen!2snp!4v1746695474520!5m2!1sen!2snp"
             width="600"
             height="450"

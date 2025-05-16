@@ -1,19 +1,18 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { persistStore } from "redux-persist";
-
-// import storageSession from "redux-persist/lib/storage/session";
+import { persistReducer, persistStore } from "redux-persist";
+import storageSession from "redux-persist/lib/storage/session";
 
 import userSlice from "./slices/user-slice";
 
-// const persistConfig = {
-//   key: "root",
-//   storage: storageSession,
-// };
+const persistConfig = {
+  key: "root",
+  storage: storageSession,
+};
 
-// const persistedReducer = persistReducer(persistConfig, projectSlice);
+const persistedReducer = persistReducer(persistConfig, userSlice);
 
 export const store = configureStore({
-  reducer: { user: userSlice },
+  reducer: { user: persistedReducer },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,

@@ -1,29 +1,32 @@
-// import Router from "./router/router";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 
-import Landing from "./pages/landing";
+import { Toaster } from "react-hot-toast";
 
-// import "react-date-range/dist/styles.css";
-// import "react-date-range/dist/theme/default.css";
-// import "react-phone-number-input/style.css";
-
-// import TailwindIndicator from "./components/tailwind-indicator";
+import Landing from "./pages/landing/landing";
+import { persistor, store } from "./redux/store";
+import Router from "./router/router";
 
 function App() {
-  // const queryClient = new QueryClient({
-  //   defaultOptions: {
-  //     queries: {
-  //       refetchOnWindowFocus: false,
-  //     },
-  //   },
-  // });
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+      },
+    },
+  });
+  console.log("dede");
 
   return (
     <>
-      {/* <Provider store={store}>
+      <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <QueryClientProvider client={queryClient}>
             <Router />
-            <ReactQueryDevtools position="top" initialIsOpen={false} />
+            {/* <Landing /> */}
+            <ReactQueryDevtools position="bottom" initialIsOpen={false} />
           </QueryClientProvider>
         </PersistGate>
       </Provider>
@@ -34,8 +37,7 @@ function App() {
             duration: 3000,
           },
         }}
-      /> */}
-      <Landing />
+      />
     </>
   );
 }
