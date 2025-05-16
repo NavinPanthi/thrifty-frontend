@@ -1,30 +1,47 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { ShoppingCart01Icon, UserIcon } from "hugeicons-react";
+import {
+  Logout01Icon,
+  Profile02Icon,
+  ShoppingCart01Icon,
+  UserIcon,
+} from "hugeicons-react";
+
+import LogoutModal from "@/components/auth/logout-modal";
+import Button from "@/components/ui/button";
+import Popup from "@/components/ui/popup";
+
+import { getUserData } from "@/utils/auth-storage";
+import { checkUser } from "@/utils/check-user";
+import { getInitialsTitle } from "@/utils/get-initials-title";
 
 const Navbar = () => {
-  // const navigate = useNavigate();
+  const [isModal, setIsModal] = useState(false);
+  const navigate = useNavigate();
+  const userData = getUserData();
+  const isUser = checkUser(userData);
+
   const handleShopClick = () => {
-    console.log("Shop clicked");
+    navigate("/shop");
   };
 
   const handleAboutClick = () => {
-    console.log("About clicked");
+    navigate("/about");
   };
 
   const handleContactClick = () => {
-    console.log("Contact Us clicked");
+    navigate("/contact");
   };
 
   const handleUserClick = () => {
-    window.location.href = "/log-in";
-
-    // navigate("/login");
-    //further need
+    if (!isUser) {
+      navigate("log-in");
+    }
   };
 
   const handleCartClick = () => {
-    console.log("Cart icon clicked");
+    navigate("/cart");
   };
 
   const renderTabs = () => {
@@ -32,7 +49,11 @@ const Navbar = () => {
       { id: 1, title: "shop", onClick: handleShopClick },
       { id: 2, title: "about", onClick: handleAboutClick },
       { id: 3, title: "contact us", onClick: handleContactClick },
-      { id: 4, icon: <UserIcon />, onClick: handleUserClick },
+      {
+        id: 4,
+        icon: GetProfileIcon(),
+        onClick: handleUserClick,
+      },
       { id: 5, icon: <ShoppingCart01Icon />, onClick: handleCartClick },
     ];
 
@@ -44,17 +65,61 @@ const Navbar = () => {
       </li>
     ));
   };
+  const GetProfileIcon = () => {
+    const userData = getUserData();
+    const isUser = checkUser(userData);
+    return isUser ? (
+      <>
+        <Popup
+          button={
+            <p className="rounded-full border p-2">
+              {getInitialsTitle(userData?.fullName)}
+            </p>
+          }
+          className="py-2"
+        >
+          <div className="flex flex-col gap-2 rounded-lg">
+            <Button
+              rounded="sm"
+              type="button"
+              variant="tertiary"
+              LeftIcon={Profile02Icon}
+            >
+              Profile
+            </Button>
+            <Button
+              rounded="sm"
+              type="button"
+              className="text-nowrap"
+              variant="danger"
+              LeftIcon={Logout01Icon}
+              onClick={() => {
+                setIsModal(true);
+              }}
+            >
+              Log out
+            </Button>
+          </div>
+        </Popup>
+      </>
+    ) : (
+      <UserIcon />
+    );
+  };
 
   return (
-    <nav className="sticky top-0 z-50 flex h-28 items-center justify-between border-b bg-white px-4 tracking-widest lg:px-28">
-      <a
-        className="leading border border-black px-10 py-3 text-3xl uppercase"
-        href="/"
-      >
-        Thrifty
-      </a>
-      <ul className="flex items-center gap-10 uppercase">{renderTabs()}</ul>
-    </nav>
+    <>
+      <nav className="sticky top-0 z-50 flex h-28 items-center justify-between border-b bg-white px-4 tracking-widest lg:px-28">
+        <a
+          className="leading border border-black px-10 py-3 text-3xl uppercase"
+          href="/"
+        >
+          Thrifty
+        </a>
+        <ul className="flex items-center gap-10 uppercase">{renderTabs()}</ul>
+      </nav>
+      <LogoutModal isOpen={isModal} closeModal={() => setIsModal(!isModal)} />
+    </>
   );
 };
 

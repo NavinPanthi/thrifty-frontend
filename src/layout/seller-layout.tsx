@@ -5,7 +5,7 @@ import Sidebar from "@/features/seller/sidebar";
 
 import { RootState } from "@/redux/store";
 
-function SuperAdminLayout({ children }: { children: React.ReactNode }) {
+function SellerLayout({ children }: { children: React.ReactNode }) {
   const { pathname } = useLocation();
 
   const loginStatus = useSelector<RootState>((state) => state.user.loginStatus);
@@ -28,4 +28,4 @@ function SuperAdminLayout({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default SuperAdminLayout;
+export default SellerLayout;

@@ -1,7 +1,39 @@
-import React from "react";
+import { Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const Login = () => {
-  return <div>Login</div>;
-};
+import { SubmitHandler } from "react-hook-form";
+
+import AuthSignInLayout from "@/components/auth/auth-login-layout";
+import LoginForm from "@/components/auth/login-form";
+
+import { RootState } from "@/redux/store";
+
+import useLoginMutation from "@/services/auth/use-login-mutation";
+
+interface IHandleLogin {
+  email: string;
+  password: string;
+  isRememberMe?: boolean;
+}
+
+function Login() {
+  const loginStatus = useSelector<RootState>((state) => state.user.loginStatus);
+
+  const { mutate: login, isPending } = useLoginMutation();
+
+  const handleLogin: SubmitHandler<IHandleLogin> = (data) => {
+    login(data);
+  };
+
+  if (loginStatus) {
+    return <Navigate replace={true} to="/" />;
+  }
+
+  return (
+    <AuthSignInLayout>
+      <LoginForm handleLogin={handleLogin} isPending={isPending} />
+    </AuthSignInLayout>
+  );
+}
 
 export default Login;

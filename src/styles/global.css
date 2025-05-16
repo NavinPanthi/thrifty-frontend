@@ -203,9 +203,9 @@
 /* Component styles */
 @layer components {
   /* Form elements */
-  /* .input {
+  .input {
     @apply block w-full rounded-md border border-neutral-200 px-2 py-3 text-sm font-normal outline-none focus:border-core-primary;
-  } */
+  }
 
   .label {
     @apply mb-2 block font-medium tracking-[-0.16px] text-neutral-800;

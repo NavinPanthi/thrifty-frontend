@@ -6,7 +6,7 @@ const useModal = () => {
   const closeModal: () => void = () => setIsOpen(false);
   const openModal: () => void = () => setIsOpen(true);
 
-  return [isOpen, closeModal, openModal] as const;
+  return [isOpen, openModal, closeModal] as const;
 };
 
 export default useModal;

@@ -7,7 +7,7 @@ const AuthHome = () => {
   const loginStatus = useSelector<RootState>((state) => state.user.loginStatus);
 
   if (!loginStatus) {
-    return <Navigate to="/login" />;
+    // return <Navigate to="/login" />;
   }
   return <></>;
 };

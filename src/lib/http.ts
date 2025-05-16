@@ -25,20 +25,19 @@ http.interceptors.request.use(
 http.interceptors.response.use(
   function (response) {
     return response;
-  },
-
-  function (error) {
-    if (
-      error.config.url !== "/admin/dashboard/owner-dashboard" &&
-      error.response.status === 401 &&
-      error.config.url !== "/admin/auth/login"
-    ) {
-      resetLoginData();
-      window.location.href = "/login/admin";
-    }
-
-    return Promise.reject(error);
   }
+
+  // function (error) {
+  //   if (
+  //     error.config.url !== "/admin/dashboard" &&
+  //     error.config.url !== "/admin/auth/login"
+  //   ) {
+  //     resetLoginData();
+  //     window.location.href = "/log-in";
+  //   }
+
+  //   return Promise.reject(error);
+  // }
 );
 
 export default http;

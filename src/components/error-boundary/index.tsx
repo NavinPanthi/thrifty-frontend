@@ -6,6 +6,9 @@ import { useErrorBoundary } from "react-error-boundary";
 
 import { IUserState } from "@/redux/slices/user-slice";
 import { RootState } from "@/redux/store";
+import { getUserData } from "@/utils/auth-storage";
+import { checkAdmin } from "@/utils/check-admin";
+import { checkSeller } from "@/utils/check-seller";
 
 function ErrorBoundary() {
   const navigate = useNavigate();
@@ -14,12 +17,18 @@ function ErrorBoundary() {
 
   const { resetBoundary } = useErrorBoundary();
 
-  const { user } = useSelector<RootState, IUserState>((state) => state.user);
-
   const handleNavigate = () => {
-    navigate(user?.isSuperAdmin ? "/super-admin/users" : "/admin/dashboard", {
-      replace: true,
-    });
+    const userData = getUserData();
+    navigate(
+      checkAdmin(userData)
+        ? "/admin/dashboard"
+        : checkSeller(userData)
+          ? "/seller/dashboard"
+          : "/",
+      {
+        replace: true,
+      }
+    );
   };
 
   useEffect(() => {

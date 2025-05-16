@@ -1,8 +1,9 @@
 import { lazy } from "react";
 
 import AboutPage from "@/pages/landing/about";
+import ContactPage from "@/pages/landing/contact";
+import ShopPage from "@/pages/landing/shop";
 import Cart from "@/pages/user/cart";
-import Contact from "@/features/landing/contact";
 
 const Landing = lazy(() => import("@/pages/landing/landing"));
 interface IUserRoutes {
@@ -28,7 +29,7 @@ const userRoutes: IUserRoutes[] = [
   },
 
   {
-    id: "login",
+    id: "about",
     path: "/about",
     component: AboutPage,
     meta: {
@@ -39,7 +40,16 @@ const userRoutes: IUserRoutes[] = [
   {
     id: "contact-us",
     path: "/contact",
-    component: Contact,
+    component: ContactPage,
+    meta: {
+      userLayout: true,
+      privateRoute: false,
+    },
+  },
+  {
+    id: "shop",
+    path: "/shop",
+    component: ShopPage,
     meta: {
       userLayout: true,
       privateRoute: false,

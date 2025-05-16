@@ -11,32 +11,15 @@ import {
 
 export interface IUser {
   id: number;
-  createdAt: string;
-  updatedAt: string;
-  name: string;
-  isVerified: boolean;
-  isOwnerOfCompany: boolean;
-  isSuperAdmin: boolean;
+  fullName: string;
   email: string;
-  profilePicture: string | null;
-  contactNumber: string;
-  salaryPerDay?: number | string;
-  company: {
-    name?: string;
-    createdAt?: string;
-    updatedAt?: string;
-    logo?: string | null;
-    acceptedAt?: string | null;
-  };
-  roles?: [
-    {
-      id?: string;
-      role: string;
-    },
-  ];
-  userData?: {
-    email?: string;
-  };
+  address?: string;
+  phone?: string;
+  imageName?: string;
+  imageType?: string;
+  imageData?: string;
+  roles: string[];
+  token: string;
 }
 
 export interface IUserState {

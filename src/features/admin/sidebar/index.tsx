@@ -1,7 +1,7 @@
-import React from "react";
+import cn from "@/lib/classnames";
 
 const Sidebar = ({ className }: { className: string }) => {
-  return <div>Sidebar</div>;
+  return <div className={cn(className)}>Sidebar</div>;
 };
 
 export default Sidebar;

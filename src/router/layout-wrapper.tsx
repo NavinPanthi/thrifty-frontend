@@ -3,32 +3,28 @@ import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import AdminLayout from "@/layout/admin-layout";
-import SuperAdminLayout from "@/layout/seller-layout";
+import SellerLayout from "@/layout/seller-layout";
 
 import { RootState } from "@/redux/store";
 import { getUserData } from "@/utils/auth-storage";
-
-const userInvitationPathname = "/admin/invitation/";
-
-const checkSuperAdmin = () => {
-  const userData = getUserData();
-  return userData?.isSuperAdmin || false;
-};
+import { checkAdmin } from "@/utils/check-admin";
+import { checkSeller } from "@/utils/check-seller";
 
 function LayoutWrapper({ children }: { children: React.ReactNode }) {
   const loginStatus = useSelector<RootState>((state) => state.user.loginStatus);
-  const { pathname } = useLocation();
-  const isSuperAdmin = checkSuperAdmin();
+
+  const userData = getUserData();
+  const isSeller = checkSeller(userData);
+  const isAdmin = checkAdmin(userData);
 
   if (!loginStatus) {
     return <Fragment>{children}</Fragment>;
   }
 
-  if (isSuperAdmin && pathname !== userInvitationPathname) {
-    return <SuperAdminLayout>{children}</SuperAdminLayout>;
+  if (isSeller) {
+    return <SellerLayout>{children}</SellerLayout>;
   }
-
-  if (!isSuperAdmin && pathname !== userInvitationPathname) {
+  if (isAdmin && !isSeller) {
     return <AdminLayout>{children}</AdminLayout>;
   }
 

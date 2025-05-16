@@ -1,5 +1,6 @@
 import { lazy } from "react";
 
+import SignUp from "@/pages/auth/sign-up";
 import Landing from "@/pages/landing/landing";
 
 const Login = lazy(() => import("@/pages/auth/login"));
@@ -31,6 +32,14 @@ const authRoutes: IAuthRoutes[] = [
     id: "login",
     path: "/log-in",
     component: Login,
+    meta: {
+      privateRoute: false,
+    },
+  },
+  {
+    id: "signup",
+    path: "/sign-up",
+    component: SignUp,
     meta: {
       privateRoute: false,
     },

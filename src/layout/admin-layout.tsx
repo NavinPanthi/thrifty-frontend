@@ -14,7 +14,7 @@ function AdminLayout({ children }: { children: React.ReactNode }) {
   );
 
   if (!loginStatus) {
-    return <Navigate to="/login/admin" />;
+    return <Navigate to="/login" />;
   }
 
   if ((loginStatus && pathname === "/") || pathname === "/admin") {
@@ -22,8 +22,8 @@ function AdminLayout({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <div className="relative flex bg-neutral-100">
-      <Sidebar className="sticky top-0 w-[260px] flex-none bg-shade-light shadow-md" />
+    <div className="relative flex h-[100vh] bg-neutral-100">
+      <Sidebar className="sticky top-0 h-full w-[260px] flex-none bg-shade-light shadow-md" />
 
       <main className="w-full overflow-auto rounded-lg p-6 xl:p-12">
         {children}
