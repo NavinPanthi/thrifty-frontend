@@ -13,7 +13,7 @@ export interface ICategory {
 
 const getCategoriesApi = async (): Promise<ICategory[] | undefined> => {
   try {
-    const response = await http.get("/api/categories");
+    const response = await http.get("/categories");
     return response.data.data;
   } catch (error) {
     const e = error as ApiError;

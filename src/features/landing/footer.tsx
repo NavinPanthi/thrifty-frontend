@@ -48,7 +48,6 @@ const Footer = () => {
           <ul className="space-y-2 text-sm">
             <li>Sign In</li>
             <li>View Cart</li>
-            <li>My Wishlist</li>
           </ul>
         </div>
       </div>

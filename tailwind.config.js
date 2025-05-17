@@ -9,7 +9,7 @@ export default {
       colors: {
         core: {
           primary: "#533B4D",
-          "primary-light": "#806679",
+          "primary-light": "#d4c3cc		",
         },
         neutral: {
           50: "#F8FAFC",

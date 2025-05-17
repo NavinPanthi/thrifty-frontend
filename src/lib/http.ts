@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { getToken, resetLoginData } from "../utils/auth-storage";
+import { getToken } from "../utils/auth-storage";
 
 const baseURL: string | undefined = import.meta.env.VITE_BASE_URL;
 

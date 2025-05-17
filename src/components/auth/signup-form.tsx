@@ -82,7 +82,6 @@ const SignUpForm = ({
         <TextInput
           {...register("address")}
           id="address"
-          isPasswordInput
           placeholder="Enter your address"
           errorMsg={errors.password?.message}
         />
@@ -95,7 +94,6 @@ const SignUpForm = ({
         <TextInput
           {...register("phone")}
           id="phone"
-          isPasswordInput
           placeholder="Enter your phone"
           errorMsg={errors.password?.message}
         />

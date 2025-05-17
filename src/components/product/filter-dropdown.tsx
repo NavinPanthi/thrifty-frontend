@@ -6,11 +6,9 @@ import cn from "classnames";
 
 import TextInput from "@/components/ui/text-input";
 
-import { FilterDropDownType } from "@/@types/props-types";
-
-function FilterDropDown(props: FilterDropDownType) {
+function FilterDropDown(props: any) {
   const { selectedFilterData, filterData, onChange, name, className } = props;
-
+  console.log(filterData);
   return (
     <Menu as="div" className="relative">
       <Menu.Button
@@ -23,7 +21,7 @@ function FilterDropDown(props: FilterDropDownType) {
           }
         )}
       >
-        <p className="body-large-semibold text-nowrap text-supporting-info">
+        <p className="body-large-semibold text-nowrap text-core-primary">
           {name}
         </p>
 
@@ -34,7 +32,7 @@ function FilterDropDown(props: FilterDropDownType) {
         )}
 
         <ChevronDownIcon
-          className="shrink-0 text-supporting-info"
+          className="shrink-0 text-core-primary"
           height={16}
           width={16}
         />
@@ -56,7 +54,7 @@ function FilterDropDown(props: FilterDropDownType) {
           )}
         >
           <div className="bar flex max-h-[300px] select-none flex-col gap-3 overflow-y-auto px-4 py-2">
-            {filterData?.map((item) => (
+            {filterData?.map((item: any) => (
               <div className="body-large flex items-center gap-3" key={item.id}>
                 <TextInput
                   checked={selectedFilterData.includes(String(item.id))}
@@ -65,7 +63,7 @@ function FilterDropDown(props: FilterDropDownType) {
                   type="checkbox"
                   inputClassName="cursor-pointer"
                 />
-                {item.name}
+                {item.title}
               </div>
             ))}
           </div>

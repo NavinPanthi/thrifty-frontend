@@ -3,7 +3,7 @@ import { ChangeEvent, Dispatch, SetStateAction } from "react";
 import Button from "@/components/ui/button";
 import TextInput from "@/components/ui/text-input";
 
-import FilterDropDown from "../filter-dropdown";
+import FilterDropDown from "../../../components/product/filter-dropdown";
 
 import useGetCategoriesQuery from "@/services/category/use-get-categories";
 
@@ -16,12 +16,12 @@ interface ProductSearchInputType {
   setSearch: Dispatch<SetStateAction<string | undefined>>;
 }
 export const conditions = [
-  { id: "brand_new", name: "Brand New" },
-  { id: "like_new", name: "Like New" },
-  { id: "very_good", name: "Very Good" },
-  { id: "good", name: "Good" },
-  { id: "acceptable", name: "Acceptable" },
-  { id: "damaged", name: "Damaged" },
+  { id: "brand_new", title: "Brand New" },
+  { id: "like_new", title: "Like New" },
+  { id: "very_good", title: "Very Good" },
+  { id: "good", title: "Good" },
+  { id: "acceptable", title: "Acceptable" },
+  { id: "damaged", title: "Damaged" },
 ];
 
 const ProductSearchInput = ({
@@ -63,11 +63,11 @@ const ProductSearchInput = ({
   };
 
   return (
-    <div className="flex items-center justify-between gap-1 rounded-xl bg-shade-light p-6 text-sm xl:text-base">
+    <div className="sticky top-28 flex flex-col items-center justify-between gap-3 rounded-xl bg-shade-light p-6 text-sm md:flex-row md:gap-1 xl:text-base">
       <TextInput
         type="number"
-        placeholder="Search Report ID"
-        containerClassName=" xs:w-[10%] sm:w-[30%] xl:w-[40%] 2xl:w-[50%] semi-2xl:w-[60%]"
+        placeholder="Search products"
+        containerClassName=" xs:w-[10%] sm:w-[30%] xl:w-[40%] 2xl:w-[50%] semi-2xl:w-[60%] "
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
@@ -77,7 +77,7 @@ const ProductSearchInput = ({
           selectedFilterData={selectedCondition}
           filterData={conditions}
           onChange={handleConditionChange}
-          name="Site Engineer"
+          name="Condition"
           className="!w-[150%]"
         />
 
@@ -85,8 +85,8 @@ const ProductSearchInput = ({
           selectedFilterData={selectedCategory}
           filterData={categories}
           onChange={handleCategoryChange}
-          name="Projects"
-          className="!w-[200%]"
+          name="Categories"
+          className="!w-[150%]"
         />
 
         <Button

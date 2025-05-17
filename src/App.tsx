@@ -26,7 +26,7 @@ function App() {
           <QueryClientProvider client={queryClient}>
             <Router />
             {/* <Landing /> */}
-            <ReactQueryDevtools position="bottom" initialIsOpen={false} />
+            {/* <ReactQueryDevtools position="bottom" initialIsOpen={false} /> */}
           </QueryClientProvider>
         </PersistGate>
       </Provider>

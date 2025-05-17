@@ -11,7 +11,7 @@ function SellerLayout({ children }: { children: React.ReactNode }) {
   const loginStatus = useSelector<RootState>((state) => state.user.loginStatus);
 
   if (!loginStatus) {
-    return <Navigate to="/login/super-admin" />;
+    return <Navigate to="/login" />;
   }
 
   if (loginStatus && pathname === "/") {

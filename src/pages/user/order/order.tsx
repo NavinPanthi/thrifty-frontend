@@ -1,15 +1,14 @@
 import Footer from "@/features/landing/footer";
 import Navbar from "@/features/landing/navbar";
-import Cart from "@/features/user/cart/cart";
 
-const CartPage = () => {
+const OrderPage = () => {
   return (
     <>
       <Navbar />
-      <Cart />
+      OrderPage
       <Footer />
     </>
   );
 };
 
-export default CartPage;
+export default OrderPage;
