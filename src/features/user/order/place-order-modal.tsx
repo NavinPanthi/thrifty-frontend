@@ -7,7 +7,7 @@ import Label from "@/components/ui/label";
 import Modal from "@/components/ui/modal";
 import TextInput from "@/components/ui/text-input";
 
-import usePlaceOrderFromCartMutation from "@/services/order/use-place-order-from-cart-mutation";
+import usePlaceOrderFromCartMutation from "@/services/user/order/use-place-order-from-cart-mutation";
 
 const schema = yup
   .object({

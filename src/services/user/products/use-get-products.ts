@@ -1,4 +1,3 @@
-import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
 import toast from "react-hot-toast";

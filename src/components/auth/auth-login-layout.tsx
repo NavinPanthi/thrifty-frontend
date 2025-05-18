@@ -3,7 +3,7 @@ function AuthSignUpLayout({ children }: { children: React.ReactNode }) {
     <section className="flex min-h-screen flex-col items-center justify-center gap-10 px-4 lg:px-0">
       <div className="flex items-start justify-center">
         <img
-          src="/public/logo.webp"
+          src="/public/logo.png"
           alt="logo"
           className="mt-6 w-[150px] lg:w-[200px]"
         />

@@ -1,7 +1,7 @@
 import { Navigate, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import Sidebar from "@/features/admin/sidebar";
+import AdminSidebar from "@/features/admin/sidebar";
 
 import { IUserState } from "@/redux/slices/user-slice";
 import { RootState } from "@/redux/store";
@@ -23,7 +23,7 @@ function AdminLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="relative flex h-[100vh] bg-neutral-100">
-      <Sidebar className="sticky top-0 h-full w-[260px] flex-none bg-shade-light shadow-md" />
+      <AdminSidebar className="sticky top-0 h-full w-[260px] flex-none bg-core-primary text-shade-light shadow-md" />
 
       <main className="w-full overflow-auto rounded-lg p-6 xl:p-12">
         {children}

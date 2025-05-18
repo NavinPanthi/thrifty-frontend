@@ -83,7 +83,7 @@ const SignUpForm = ({
           {...register("address")}
           id="address"
           placeholder="Enter your address"
-          errorMsg={errors.password?.message}
+          errorMsg={errors.address?.message}
         />
       </fieldset>
 
@@ -95,7 +95,7 @@ const SignUpForm = ({
           {...register("phone")}
           id="phone"
           placeholder="Enter your phone"
-          errorMsg={errors.password?.message}
+          errorMsg={errors.phone?.message}
         />
       </fieldset>
 

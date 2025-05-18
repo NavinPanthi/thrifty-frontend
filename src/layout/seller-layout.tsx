@@ -1,7 +1,7 @@
 import { Navigate, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import Sidebar from "@/features/seller/sidebar";
+import SellerSidebar from "@/features/seller/sidebar";
 
 import { RootState } from "@/redux/store";
 
@@ -15,13 +15,14 @@ function SellerLayout({ children }: { children: React.ReactNode }) {
   }
 
   if (loginStatus && pathname === "/") {
-    return <Navigate replace={true} to="/super-admin" />;
+    return <Navigate replace={true} to="/" />;
   }
 
   return (
-    <div className="flex bg-neutral-100">
-      <Sidebar className="sticky top-0 w-[260px] flex-none bg-shade-light shadow-md" />
-      <main className="h-fit w-full overflow-auto rounded-lg p-6 xl:p-12">
+    <div className="relative flex h-[100vh] bg-neutral-100">
+      <SellerSidebar className="sticky top-0 h-full w-[260px] flex-none bg-core-primary px-2 py-6 tracking-wider text-shade-light shadow-md" />
+
+      <main className="w-full overflow-auto rounded-lg p-6 xl:p-20">
         {children}
       </main>
     </div>

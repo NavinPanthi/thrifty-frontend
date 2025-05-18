@@ -1,5 +1,8 @@
 import { lazy } from "react";
 
+import SellerProductsPage from "@/pages/seller/products";
+import SellerProfilePage from "@/pages/seller/profile";
+
 const Dashboard = lazy(() => import("@/pages/seller/dashboard"));
 
 interface ISellerRoutes {
@@ -18,6 +21,32 @@ const SellerRoutes: ISellerRoutes[] = [
     component: Dashboard,
     meta: {
       sellerLayout: true,
+      privateRoute: true,
+    },
+  },
+  {
+    id: "dashboard",
+    path: "/seller/products",
+    component: SellerProductsPage,
+    meta: {
+      sellerLayout: true,
+      privateRoute: true,
+    },
+  },
+  {
+    id: "dashboard",
+    path: "/seller/orders",
+    component: Dashboard,
+    meta: {
+      sellerLayout: true,
+      privateRoute: true,
+    },
+  },
+  {
+    id: "dashboard",
+    path: "/seller/profile",
+    component: SellerProfilePage,
+    meta: {
       privateRoute: true,
     },
   },

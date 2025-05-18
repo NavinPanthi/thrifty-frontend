@@ -24,7 +24,7 @@ const MergedLayoutRoute = ({ children }: { children?: React.ReactNode }) => {
       <Suspense
         fallback={
           <div className="flex h-[calc(100vh-96px)] w-full items-center justify-center p-0">
-            <img height={100} width={100} src="/public/logo.webp" alt="logo" />
+            <img height={200} width={200} src="/public/logo.png" alt="logo" />
           </div>
         }
       >

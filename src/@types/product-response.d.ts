@@ -1,23 +1,3 @@
-interface UserReview {
-  id: number;
-  fullName: string;
-  email: string;
-  imageName: string | null;
-  imageType: string | null;
-  imageData: string | null;
-  phone: string | null;
-  address: string | null;
-  roles: string[];
-}
-
-interface Review {
-  id: number;
-  comment: string;
-  reviewDate: string;
-  rating: number;
-  user: UserReview;
-}
-
 interface ProductImage {
   id: number;
   imageData: string;

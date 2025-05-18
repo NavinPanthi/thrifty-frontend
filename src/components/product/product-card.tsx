@@ -22,9 +22,6 @@ const ProductCard = ({ product }: { product: Product }) => {
 
       <div className="flex items-center justify-between">
         <h2 className="truncate text-lg font-semibold">{product.title}</h2>
-        {product.verified && (
-          <span className="text-xs font-bold text-green-600">✔ Verified</span>
-        )}
       </div>
 
       <p className="line-clamp-2 text-sm text-gray-600">

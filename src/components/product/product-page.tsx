@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 
 import AddToCart from "@/features/user/cart/add-to-cart";
-import AddReviewForm from "@/features/user/review/add-review-form";
+import AddReviewForm from "@/features/user/shop/add-review-form";
 
 import cn from "@/lib/classnames";
 
@@ -77,7 +77,7 @@ const ProductDetail = ({
       </div>
 
       {/* Reviews Section */}
-      <div className="mt-16">
+      <div className="mt-16 max-w-[800px]">
         <h2 className="mb-4 text-xl font-semibold">Reviews</h2>
         {product.reviews.length === 0 ? (
           <p className="text-gray-500">No reviews yet.</p>
@@ -103,7 +103,7 @@ const ProductDetail = ({
           </div>
         )}
       </div>
-      {reviewButton ? <AddReviewForm /> : <></>}
+      {reviewButton ? <AddReviewForm productId={id} /> : <></>}
     </div>
   );
 };
