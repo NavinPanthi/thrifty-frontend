@@ -1,28 +1,20 @@
-import { ChangeEvent, Dispatch, SetStateAction } from "react";
+import { ChangeEvent } from "react";
 
 import Button from "@/components/ui/button";
+import SelectInput from "@/components/ui/select";
 import TextInput from "@/components/ui/text-input";
+
+import { getUserData } from "@/utils/auth-storage";
+import { checkAdmin } from "@/utils/check-admin";
+import { checkSeller } from "@/utils/check-seller";
+import { conditions, verifiedOptions } from "@/utils/filter-data";
+import cn from "@/lib/classnames";
 
 import FilterDropDown from "../../../components/product/filter-dropdown";
 
-import useGetCategoriesQuery from "@/services/category/use-get-categories";
+import { ProductSearchInputType } from "@/@types/props-types";
 
-interface ProductSearchInputType {
-  selectedCondition: string[];
-  selectedCategory: string[];
-  search: string | undefined;
-  setSelectedCondition: Dispatch<SetStateAction<string[]>>;
-  setSelectedCategory: Dispatch<SetStateAction<string[]>>;
-  setSearch: Dispatch<SetStateAction<string | undefined>>;
-}
-export const conditions = [
-  { id: "brand_new", title: "Brand New" },
-  { id: "like_new", title: "Like New" },
-  { id: "very_good", title: "Very Good" },
-  { id: "good", title: "Good" },
-  { id: "acceptable", title: "Acceptable" },
-  { id: "damaged", title: "Damaged" },
-];
+import useGetCategoriesQuery from "@/services/category/use-get-categories";
 
 const ProductSearchInput = ({
   selectedCondition,
@@ -31,17 +23,27 @@ const ProductSearchInput = ({
   setSelectedCondition,
   setSelectedCategory,
   setSearch,
+  className,
+  verified,
+  setVerified,
 }: ProductSearchInputType) => {
   const { data: categories } = useGetCategoriesQuery();
+  const userData = getUserData();
+  const isShowVerification = checkAdmin(userData) || checkSeller(userData);
 
   const handleResetFiltersAndSearch = () => {
     setSelectedCondition([]);
     setSelectedCategory([]);
     setSearch("");
+    setVerified(undefined);
   };
 
   const hasDataInFilter =
-    selectedCategory.length > 0 || selectedCondition.length > 0 || search;
+    selectedCategory.length > 0 ||
+    selectedCondition.length > 0 ||
+    search ||
+    verified === false ||
+    verified === true;
 
   const handleCategoryChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value, checked } = e.target;
@@ -61,9 +63,20 @@ const ProductSearchInput = ({
         : prevState.filter((item) => item !== value)
     );
   };
+  const handleVerifiedChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    const val = e.target.value;
+
+    if (val === "") {
+      setVerified?.("");
+    } else if (val === "true") {
+      setVerified?.(true);
+    } else if (val === "false") {
+      setVerified?.(false);
+    }
+  };
 
   return (
-    <div className="sticky top-28 flex flex-col items-center justify-between gap-3 rounded-xl bg-shade-light p-6 text-sm md:flex-row md:gap-1 xl:text-base">
+    <div className={cn(className)}>
       <TextInput
         type="number"
         placeholder="Search products"
@@ -73,6 +86,19 @@ const ProductSearchInput = ({
       />
 
       <div className="flex gap-2">
+        {isShowVerification && (
+          <SelectInput
+            title="Verification"
+            value={
+              verified === true ? "true" : verified === false ? "false" : ""
+            }
+            onChange={handleVerifiedChange}
+            options={verifiedOptions}
+            inputClassName="!w-full items"
+            className="flex min-w-[140px] items-center gap-3 rounded-full border-2 border-core-primary"
+          />
+        )}
+
         <FilterDropDown
           selectedFilterData={selectedCondition}
           filterData={conditions}

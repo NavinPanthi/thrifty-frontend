@@ -69,7 +69,7 @@ const userRoutes: IUserRoutes[] = [
 
   {
     id: "product-page",
-    path: "/shop/product/:id",
+    path: "/product/:id",
     component: ProductDetailUserPage,
     meta: {
       userLayout: true,

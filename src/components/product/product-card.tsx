@@ -6,7 +6,7 @@ const ProductCard = ({ product }: { product: Product }) => {
   return (
     <div
       className="flex h-fit cursor-pointer flex-col gap-2 rounded-2xl bg-white p-4 shadow transition hover:shadow-md"
-      onClick={() => navigate(`/shop/product/${product.id}`)}
+      onClick={() => navigate(`/product/${product.id}`)}
     >
       {firstImage ? (
         <img

@@ -8,7 +8,7 @@ import ProductSearchInput from "../user/shop/product-search-input";
 
 import useGetUserProductsQuery from "@/services/user/products/use-get-products";
 
-const Shop = () => {
+const UserProduct = () => {
   const [search, setSearch] = useState<string | undefined>();
   const [searchParams] = useSearchParams({
     page: "1",
@@ -30,6 +30,7 @@ const Shop = () => {
   return (
     <div className="relative gap-2 px-4 lg:px-28">
       <ProductSearchInput
+        className="sticky top-28 flex flex-col items-center justify-between gap-3 rounded-xl bg-shade-light p-6 text-sm md:flex-row md:gap-1 xl:text-base"
         selectedCondition={selectedCondition}
         selectedCategory={selectedCategory}
         search={search}
@@ -46,4 +47,4 @@ const Shop = () => {
   );
 };
 
-export default Shop;
+export default UserProduct;

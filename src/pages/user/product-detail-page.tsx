@@ -1,6 +1,6 @@
 import Footer from "@/features/landing/footer";
 import Navbar from "@/features/landing/navbar";
-import ProductDetail from "@/components/product/product-page";
+import ProductDetail from "@/components/product/product-detail";
 
 const ProductDetailUserPage = () => {
   return (

@@ -44,7 +44,7 @@ const Cart = () => {
             <div
               key={item.id}
               className="flex cursor-pointer items-center gap-4 rounded-lg border p-4 shadow-sm"
-              onClick={() => navigate(`/shop/product/${item.product.id}`)}
+              onClick={() => navigate(`/product/${item.product.id}`)}
             >
               <img
                 src={`data:${firstImage.imageType};base64,${firstImage.imageData}`}
