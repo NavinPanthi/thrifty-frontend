@@ -1,16 +1,17 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import ProductSearchInput from "@/features/user/shop/product-search-input";
 import Header from "@/components/header";
-import ProductCard from "@/components/product/product-card";
+import Pagination from "@/components/pagination";
+import ProductTable from "@/components/product/product-table";
 import ProductSkeletonCard from "@/components/skeleton/product-skeleton";
 
 import useGetSellerProductsQuery from "@/services/seller/product/use-get-all-products-seller-query";
 
 const SellerProductsPage = () => {
-  const [search, setSearch] = useState<string | undefined>();
-  const [searchParams] = useSearchParams({
+  const [search, setSearch] = useState<string | undefined>("");
+  const [searchParams, setSearchParams] = useSearchParams({
     page: "1",
     size: "20",
   });
@@ -24,6 +25,16 @@ const SellerProductsPage = () => {
     searchParams,
     verified,
   });
+  const paginationInfo: IPagination = useMemo(
+    () => ({
+      totalItems: productsData?.totalItems,
+      pages: productsData?.totalPages,
+      size: productsData?.limit,
+      currPage: productsData?.currPage,
+      hasNext: productsData?.hasNextPage,
+    }),
+    [productsData]
+  );
 
   if (isPending) {
     return <ProductSkeletonCard />;
@@ -43,11 +54,12 @@ const SellerProductsPage = () => {
           verified={verified}
           setVerified={setVerified}
         />
-        <div className="grid grid-cols-1 gap-4 py-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {productsData?.items?.map((product) => (
-            <ProductCard product={product} />
-          ))}
-        </div>
+        <ProductTable productsData={productsData} />
+        <Pagination
+          paginationInfo={paginationInfo}
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
+        />
       </div>
     </>
   );

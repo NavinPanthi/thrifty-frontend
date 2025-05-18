@@ -18,7 +18,7 @@ export const sellerLinks: INavigation[] = [
   {
     id: "Orders",
     name: "Orders",
-    path: "/seller/orders?section=pending",
+    path: "/seller/orders",
     icon: ClipboardIcon,
   },
 ];

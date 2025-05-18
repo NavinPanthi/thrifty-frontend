@@ -17,5 +17,5 @@ export interface ProductSearchInputType {
   setSearch: Dispatch<SetStateAction<string | undefined>>;
   className: string;
   verified?: boolean | string;
-  setVerified?: Dispatch<SetStateAction<boolean | undefined | "">>;
+  setVerified?: Dispatch<SetStateAction<boolean | undefined | string>>;
 }

@@ -11,3 +11,10 @@ export const verifiedOptions = [
   { id: "verified", value: "true", name: "Verified" },
   { id: "non-verified", value: "false", name: "Non Verified" },
 ];
+
+export const orderStatusOptions = [
+  { id: "all", value: "", name: "All" },
+  { id: "pending", value: "pending", name: "Pending" },
+  { id: "completed", value: "completed", name: "Completed" },
+  { id: "cancelled", value: "cancelled", name: "Cancelled" },
+];

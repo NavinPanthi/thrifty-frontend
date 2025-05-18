@@ -11,18 +11,18 @@ const getSellerProductsApi = async ({
   searchParams,
   selectedCategory,
   selectedCondition,
-  search,
+  debounceSearch,
   verified,
 }: {
   searchParams: URLSearchParams;
   selectedCategory?: string[];
-  search?: string;
+  debounceSearch?: string;
   selectedCondition?: string[];
   verified?: boolean | string;
 }): Promise<ProductListData | undefined> => {
   const searchQueryParams = new URLSearchParams(searchParams);
-  if (search) {
-    searchQueryParams.set("search", search);
+  if (debounceSearch) {
+    searchQueryParams.set("search", debounceSearch);
   }
 
   if (selectedCategory && selectedCategory?.length > 0) {
@@ -81,7 +81,6 @@ const useGetSellerProductsQuery = ({
       page,
       selectedCondition,
       selectedCategory,
-      search,
       debounceSearch,
       verified,
     ],
@@ -90,7 +89,7 @@ const useGetSellerProductsQuery = ({
         searchParams,
         selectedCondition,
         selectedCategory,
-        search,
+        debounceSearch,
         verified,
       }),
   });

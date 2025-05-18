@@ -1,7 +1,8 @@
 import { lazy } from "react";
 
-import SellerProductsPage from "@/pages/seller/products/seller-products-page";
+import SellerOrdersPage from "@/pages/seller/orders/seller-orders-page";
 import ProductDetailSellerPage from "@/pages/seller/products/product-detail-page";
+import SellerProductsPage from "@/pages/seller/products/seller-products-page";
 import SellerProfilePage from "@/pages/seller/profile";
 
 const Dashboard = lazy(() => import("@/pages/seller/dashboard"));
@@ -26,7 +27,7 @@ const SellerRoutes: ISellerRoutes[] = [
     },
   },
   {
-    id: "dashboard",
+    id: "seller-products",
     path: "/seller/products",
     component: SellerProductsPage,
     meta: {
@@ -35,16 +36,16 @@ const SellerRoutes: ISellerRoutes[] = [
     },
   },
   {
-    id: "dashboard",
+    id: "seller-orders",
     path: "/seller/orders",
-    component: Dashboard,
+    component: SellerOrdersPage,
     meta: {
       sellerLayout: true,
       privateRoute: true,
     },
   },
   {
-    id: "dashboard",
+    id: "seller-profile",
     path: "/seller/profile",
     component: SellerProfilePage,
     meta: {
@@ -53,7 +54,7 @@ const SellerRoutes: ISellerRoutes[] = [
     },
   },
   {
-    id: "dashboard",
+    id: "product-detail",
     path: "/product/:id",
     component: ProductDetailSellerPage,
     meta: {

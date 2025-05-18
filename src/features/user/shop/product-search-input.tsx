@@ -1,8 +1,8 @@
 import { ChangeEvent } from "react";
 
 import Button from "@/components/ui/button";
+import SearchInput from "@/components/ui/search-input";
 import SelectInput from "@/components/ui/select";
-import TextInput from "@/components/ui/text-input";
 
 import { getUserData } from "@/utils/auth-storage";
 import { checkAdmin } from "@/utils/check-admin";
@@ -77,8 +77,7 @@ const ProductSearchInput = ({
 
   return (
     <div className={cn(className)}>
-      <TextInput
-        type="number"
+      <SearchInput
         placeholder="Search products"
         containerClassName=" xs:w-[10%] sm:w-[30%] xl:w-[40%] 2xl:w-[50%] semi-2xl:w-[60%] "
         value={search}
