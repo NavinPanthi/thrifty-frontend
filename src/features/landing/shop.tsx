@@ -43,6 +43,13 @@ const UserProduct = () => {
           <ProductCard product={product} />
         ))}
       </div>
+      {productsData?.items.length === 0 ? (
+        <p className="flex min-h-[50vh] items-center justify-center">
+          No products found.
+        </p>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

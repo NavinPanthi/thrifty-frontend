@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { SubmitHandler } from "react-hook-form";
 
-import AuthSignUpLayout from "@/components/auth/auth-login-layout";
+import AuthSignUpLayout from "@/components/auth/auth-signup-layout";
 import SignUpForm from "@/components/auth/signup-form";
 
 import useSignUpMutation from "@/services/auth/use-signup-mutation";

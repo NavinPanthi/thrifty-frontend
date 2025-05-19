@@ -5,20 +5,40 @@ import AddReviewForm from "@/features/user/shop/add-review-form";
 
 import cn from "@/lib/classnames";
 
+import Button from "../ui/button";
+
+import useVerifyProductMutation from "@/services/admin/product/use-verify-product-mutation";
 import useGetSingleProductQuery from "@/services/product/use-get-single-product";
 
 const ProductDetail = ({
   className,
   cartButton = false,
   reviewButton = false,
+  verifyButton = false,
+  productId,
+  containerClassName,
+  toggleDrawer,
 }: {
-  className: string;
+  className?: string;
   cartButton?: boolean;
   reviewButton?: boolean;
+  verifyButton?: boolean;
+  productId?: string | number;
+  containerClassName?: string;
+  toggleDrawer?: () => void;
 }) => {
   const { id } = useParams<{ id: string }>();
-  const { data: product, isPending } = useGetSingleProductQuery(id || "");
+  const resolvedProductId = productId || id;
+  const { data: product, isPending } = useGetSingleProductQuery(
+    resolvedProductId ?? ""
+  );
 
+  const { mutate: handleVerify, isPending: isVerifyPending } =
+    useVerifyProductMutation(toggleDrawer);
+
+  const onClick = () => {
+    handleVerify(resolvedProductId);
+  };
   if (isPending) return <div className="py-10 text-center">Loading...</div>;
   if (!product)
     return <div className="py-10 text-center">Product not found.</div>;
@@ -27,7 +47,12 @@ const ProductDetail = ({
 
   return (
     <div className={cn(className)}>
-      <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
+      <div
+        className={cn(
+          containerClassName,
+          "grid grid-cols-1 gap-10 md:grid-cols-2"
+        )}
+      >
         <div className="flex items-center justify-center">
           {firstImage ? (
             <img
@@ -73,6 +98,13 @@ const ProductDetail = ({
             Condition: {product.productCondition}
           </div>
           {cartButton && id ? <AddToCart product={product} /> : <></>}
+          {verifyButton && !product.verified && !!product ? (
+            <Button disabled={isVerifyPending} onClick={onClick}>
+              Verify product
+            </Button>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
 

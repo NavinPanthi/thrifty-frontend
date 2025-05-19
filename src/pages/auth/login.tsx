@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 import { SubmitHandler } from "react-hook-form";
 
-import AuthSignInLayout from "@/components/auth/auth-login-layout";
+import AuthLogInLayout from "@/components/auth/auth-login-layout";
 import LoginForm from "@/components/auth/login-form";
 
 import { RootState } from "@/redux/store";
@@ -30,9 +30,9 @@ function Login() {
   }
 
   return (
-    <AuthSignInLayout>
+    <AuthLogInLayout>
       <LoginForm handleLogin={handleLogin} isPending={isPending} />
-    </AuthSignInLayout>
+    </AuthLogInLayout>
   );
 }
 

@@ -7,7 +7,7 @@ import http from "@/lib/http";
 import { ApiError } from "@/@types/apiError";
 
 const getSingleProductApi = async (
-  productId: string
+  productId: string | number
 ): Promise<Product | undefined> => {
   try {
     const response = await http(`/products/${productId}`);
@@ -18,7 +18,7 @@ const getSingleProductApi = async (
   }
 };
 
-const useGetSingleProductQuery = (productId: string) => {
+const useGetSingleProductQuery = (productId: string | number) => {
   return useQuery({
     queryKey: ["product", productId],
     queryFn: () => getSingleProductApi(productId),

@@ -5,27 +5,21 @@ import toast from "react-hot-toast";
 import http from "@/lib/http";
 
 import { ApiError } from "@/@types/apiError";
+import { UsersData } from "@/@types/users-api-response";
 
-const getSellerProductsApi = async ({
+const fetchAllUsers = async ({
   searchParams,
-  orderStatus,
 }: {
   searchParams: URLSearchParams;
-  orderStatus?: string;
-}): Promise<OrdersData | undefined> => {
+}): Promise<UsersData | undefined> => {
   const searchQueryParams = new URLSearchParams(searchParams);
-
   ["page", "size"].forEach((param) => {
     const value = searchParams.get(param);
     if (value) searchQueryParams.set(param, value);
   });
 
-  if (orderStatus !== "" && orderStatus !== undefined) {
-    searchQueryParams.append("status", orderStatus);
-  }
-
   try {
-    const response = await http(`/sellers/orders`, {
+    const response = await http(`/admin/all-users`, {
       params: searchQueryParams,
     });
     return response.data.data;
@@ -35,24 +29,18 @@ const getSellerProductsApi = async ({
   }
 };
 
-const useGetSellerOrdersQuery = ({
+const useGetAllUsersQuery = ({
   searchParams,
-  orderStatus,
 }: {
-  orderStatus?: string;
   searchParams: URLSearchParams;
 }) => {
   const page = searchParams.get("page") || "1";
   const size = searchParams.get("size") || "20";
 
   return useQuery({
-    queryKey: ["seller-orders", size, page, orderStatus],
-    queryFn: () =>
-      getSellerProductsApi({
-        searchParams,
-        orderStatus,
-      }),
+    queryKey: ["admin-users", searchParams.toString(), size, page],
+    queryFn: () => fetchAllUsers({ searchParams }),
   });
 };
 
-export default useGetSellerOrdersQuery;
+export default useGetAllUsersQuery;

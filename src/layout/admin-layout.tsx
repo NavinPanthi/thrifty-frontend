@@ -23,7 +23,7 @@ function AdminLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="relative flex h-[100vh] bg-neutral-100">
-      <AdminSidebar className="sticky top-0 h-full w-[260px] flex-none bg-core-primary text-shade-light shadow-md" />
+      <AdminSidebar className="sticky top-0 h-full w-[260px] flex-none bg-core-primary px-2 py-6 tracking-wider text-shade-light shadow-md" />
 
       <main className="w-full overflow-auto rounded-lg p-6 xl:p-12">
         {children}

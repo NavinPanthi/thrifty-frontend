@@ -30,7 +30,7 @@ const OrderTable = ({ ordersData }: { ordersData?: OrdersData }) => {
             {ordersData.items.map((order) => (
               <tr
                 key={order.id}
-                className="border-t"
+                className="cursor-pointer border-t"
                 onClick={() => {
                   setSelectedOrder(order);
                   setIsOrderDetailModalOpen(true);
@@ -40,7 +40,22 @@ const OrderTable = ({ ordersData }: { ordersData?: OrdersData }) => {
                 <td className="px-4 py-2">
                   {dayjs(order.orderDate).format("YYYY-MM-DD")}
                 </td>
-                <td className="px-4 py-2">{order.orderStatus}</td>
+                <td className="px-4 py-2">
+                  {" "}
+                  <span
+                    className={
+                      order?.orderStatus === "pending"
+                        ? "text-supporting-warning"
+                        : order?.orderStatus === "completed"
+                          ? "text-supporting-success"
+                          : order?.orderStatus === "cancelled"
+                            ? "text-supporting-error"
+                            : "text-gray-600"
+                    }
+                  >
+                    {order?.orderStatus}
+                  </span>
+                </td>
                 <td className="px-4 py-2">${order.totalAmount.toFixed(2)}</td>
                 <td className="px-4 py-2">
                   {dayjs(order.deliveryDate).format("YYYY-MM-DD")}

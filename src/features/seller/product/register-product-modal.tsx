@@ -1,14 +1,13 @@
-import OrderDetail from "@/components/order/order-card";
 import Modal from "@/components/ui/modal";
 
-const OrderDetailModal = ({
+import AddProductForm from "./add-product-form";
+
+const RegisterProductModal = ({
   isOpen,
   closeModal,
-  order,
 }: {
   isOpen: boolean;
   closeModal: () => void;
-  order: Order | null;
 }) => {
   return (
     <Modal
@@ -16,9 +15,9 @@ const OrderDetailModal = ({
       closeModal={closeModal}
       className="!max-w-[800px] gap-10"
     >
-      <OrderDetail order={order} closeModal={closeModal} />
+      <AddProductForm closeModal={closeModal} />
     </Modal>
   );
 };
 
-export default OrderDetailModal;
+export default RegisterProductModal;

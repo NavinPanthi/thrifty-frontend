@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Delete01Icon, MinusSignIcon, PlusSignIcon } from "hugeicons-react";
@@ -11,8 +11,12 @@ import useGetCartItemsQuery from "@/services/user/cart/use-get-cart-items";
 
 const Cart = () => {
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
-  const { data: cartItems, isLoading } = useGetCartItemsQuery();
+  const { data: cartItems, isLoading, refetch } = useGetCartItemsQuery();
+  console.log(cartItems);
   const navigate = useNavigate();
+  useEffect(() => {
+    refetch();
+  }, []);
 
   if (isLoading) return <p>Loading...</p>;
   if (!cartItems?.length)

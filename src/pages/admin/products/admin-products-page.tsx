@@ -1,16 +1,15 @@
 import { useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import RegisterProductModal from "@/features/seller/product/register-product-modal";
 import ProductSearchInput from "@/features/user/shop/product-search-input";
 import Header from "@/components/header";
 import Pagination from "@/components/pagination";
 import ProductTable from "@/components/product/product-table";
 import ProductSkeletonCard from "@/components/skeleton/product-skeleton";
 
-import useGetSellerProductsQuery from "@/services/seller/product/use-get-all-products-seller-query";
+import useGetAdminProductsQuery from "@/services/admin/product/use-get-all-products-admin-query";
 
-const SellerProductsPage = () => {
+const AdminProductsPage = () => {
   const [search, setSearch] = useState<string | undefined>("");
   const [searchParams, setSearchParams] = useSearchParams({
     page: "1",
@@ -19,7 +18,7 @@ const SellerProductsPage = () => {
   const [selectedCondition, setSelectedCondition] = useState<string[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string[]>([]);
   const [verified, setVerified] = useState<string | undefined | boolean>();
-  const { data: productsData, isPending } = useGetSellerProductsQuery({
+  const { data: productsData, isPending } = useGetAdminProductsQuery({
     selectedCondition,
     selectedCategory,
     search,
@@ -37,20 +36,12 @@ const SellerProductsPage = () => {
     [productsData]
   );
 
-  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   if (isPending) {
     return <ProductSkeletonCard />;
   }
   return (
     <>
-      <Header
-        title="Your Products"
-        description="Manage your products"
-        ActionComponent=<p>Add Product</p>
-        actionCallback={() => {
-          setIsRegisterModalOpen(true);
-        }}
-      />
+      <Header title="Your Products" description="Manage your products" />
       <div className="relative mt-4 gap-2">
         <ProductSearchInput
           className="flex flex-col items-center justify-between gap-3 rounded-xl bg-shade-light p-6 text-sm md:flex-row md:gap-1 xl:text-base"
@@ -70,12 +61,8 @@ const SellerProductsPage = () => {
           setSearchParams={setSearchParams}
         />
       </div>
-      <RegisterProductModal
-        isOpen={isRegisterModalOpen}
-        closeModal={() => setIsRegisterModalOpen(false)}
-      />
     </>
   );
 };
 
-export default SellerProductsPage;
+export default AdminProductsPage;

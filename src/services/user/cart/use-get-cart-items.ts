@@ -8,8 +8,11 @@ const getCartItemsApi = async (): Promise<CartItem[] | undefined> => {
   try {
     const response = await http.get("/users/cart");
     return response.data.data.cartItems;
-  } catch {
-    return;
+  } catch (error: any) {
+    if (error.response?.status === 404) {
+      return []; // cart is empty
+    }
+    throw error; // let other errors bubble up
   }
 };
 

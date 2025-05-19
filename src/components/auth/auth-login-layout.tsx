@@ -1,4 +1,4 @@
-function AuthSignUpLayout({ children }: { children: React.ReactNode }) {
+function AuthLogInLayout({ children }: { children: React.ReactNode }) {
   return (
     <section className="flex min-h-screen flex-col items-center justify-center gap-10 px-4 lg:px-0">
       <div className="flex items-start justify-center">
@@ -22,4 +22,4 @@ function AuthSignUpLayout({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default AuthSignUpLayout;
+export default AuthLogInLayout;
