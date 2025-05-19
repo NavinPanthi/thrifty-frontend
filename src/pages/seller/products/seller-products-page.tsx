@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import RegisterProductModal from "@/features/seller/product/register-product-modal";
+import RegisterProductDrawer from "@/features/seller/product/register-product-modal";
 import ProductSearchInput from "@/features/user/shop/product-search-input";
 import Header from "@/components/header";
 import Pagination from "@/components/pagination";
@@ -37,7 +37,7 @@ const SellerProductsPage = () => {
     [productsData]
   );
 
-  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+  const [isRegisterDrawerOpen, setIsRegisterDrawerOpen] = useState(false);
   if (isPending) {
     return <ProductSkeletonCard />;
   }
@@ -48,7 +48,7 @@ const SellerProductsPage = () => {
         description="Manage your products"
         ActionComponent=<p>Add Product</p>
         actionCallback={() => {
-          setIsRegisterModalOpen(true);
+          setIsRegisterDrawerOpen(true);
         }}
       />
       <div className="relative mt-4 gap-2">
@@ -70,9 +70,9 @@ const SellerProductsPage = () => {
           setSearchParams={setSearchParams}
         />
       </div>
-      <RegisterProductModal
-        isOpen={isRegisterModalOpen}
-        closeModal={() => setIsRegisterModalOpen(false)}
+      <RegisterProductDrawer
+        isOpen={isRegisterDrawerOpen}
+        toggleDrawer={() => setIsRegisterDrawerOpen(!isRegisterDrawerOpen)}
       />
     </>
   );

@@ -1,23 +1,23 @@
-import Modal from "@/components/ui/modal";
+import Drawer from "@/components/ui/drawer";
 
 import AddProductForm from "./add-product-form";
 
-const RegisterProductModal = ({
+const RegisterProductDrawer = ({
   isOpen,
-  closeModal,
+  toggleDrawer,
 }: {
   isOpen: boolean;
-  closeModal: () => void;
+  toggleDrawer: () => void;
 }) => {
   return (
-    <Modal
+    <Drawer
       isOpen={isOpen}
-      closeModal={closeModal}
+      toggleDrawer={toggleDrawer}
       className="!max-w-[800px] gap-10"
     >
-      <AddProductForm closeModal={closeModal} />
-    </Modal>
+      <AddProductForm toggleDrawer={toggleDrawer} />
+    </Drawer>
   );
 };
 
-export default RegisterProductModal;
+export default RegisterProductDrawer;

@@ -2,13 +2,11 @@ import { useMutation } from "@tanstack/react-query";
 
 import toast from "react-hot-toast";
 
-import { IHandleEditProfile } from "@/pages/seller/profile";
-
 import http from "@/lib/http";
 
 import { ApiError } from "@/@types/apiError";
 
-const EditProfileApi = async (data: IHandleEditProfile) => {
+const EditProfileApi = async (data: FormData) => {
   const response = await http.patch(`/users`, data);
   return { ...response.data };
 };

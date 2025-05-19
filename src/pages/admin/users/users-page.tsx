@@ -32,8 +32,8 @@ const UsersPage = () => {
   }
   return (
     <>
-      <Header title="All users" className="my-6" description="" />
-      <div className="relative my-4 gap-2">
+      <Header title="All users" className="my-6" description="View users" />
+      <div className="relative my-6 gap-2">
         <UsersTable usersData={usersData} />
       </div>
       <Pagination

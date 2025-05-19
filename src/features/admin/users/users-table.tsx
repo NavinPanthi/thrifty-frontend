@@ -1,9 +1,4 @@
-import { getInitialsTitle } from "@/utils/get-initials-title";
-
 const UsersTable = ({ usersData }: { usersData?: UsersData }) => {
-  // const [isUserDetailModalOpen, setIsUserDetailModalOpen] = useState(false);
-  // const [selectedUser, setSelectedUser] = useState<User | null>(null);
-
   if (!usersData || usersData.items.length === 0) {
     return <div className="py-8 text-center">No users found.</div>;
   }
@@ -14,7 +9,6 @@ const UsersTable = ({ usersData }: { usersData?: UsersData }) => {
         <table className="min-w-full table-auto text-left text-sm">
           <thead className="bg-gray-100 font-medium text-gray-700">
             <tr>
-              <th className="px-4 py-2">Image</th>
               <th className="px-4 py-2">Full Name</th>
               <th className="px-4 py-2">Email</th>
               <th className="px-4 py-2">Phone</th>
@@ -34,19 +28,6 @@ const UsersTable = ({ usersData }: { usersData?: UsersData }) => {
                   //   setIsUserDetailModalOpen(true);
                   // }}
                 >
-                  <td className="px-4 py-2">
-                    {user.imageData && user.imageType ? (
-                      <img
-                        src={`data:${user.imageType};base64,${user.imageData}`}
-                        alt={user.fullName}
-                        className="h-10 w-10 rounded-full object-cover"
-                      />
-                    ) : (
-                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-300">
-                        {getInitialsTitle(user.fullName)}
-                      </div>
-                    )}
-                  </td>
                   <td className="px-4 py-2">{user.fullName}</td>
                   <td className="px-4 py-2">{user.email}</td>
                   <td className="px-4 py-2">{user.phone || "-"}</td>

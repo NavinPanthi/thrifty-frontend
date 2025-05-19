@@ -1,7 +1,5 @@
 import EditProfileForm from "@/features/seller/profile/edit-profile-form";
 
-import { getUserData } from "@/utils/auth-storage";
-
 export interface IHandleEditProfile {
   fullName: string;
   phone?: string;
@@ -9,8 +7,7 @@ export interface IHandleEditProfile {
 }
 
 const SellerProfilePage = () => {
-  const userData = getUserData();
-  return <EditProfileForm userData={userData} />;
+  return <EditProfileForm />;
 };
 
 export default SellerProfilePage;

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -9,6 +10,8 @@ import Button from "@/components/ui/button";
 import Label from "@/components/ui/label";
 import TextInput from "@/components/ui/text-input";
 
+import { setUser } from "@/redux/slices/user-slice";
+import { RootState } from "@/redux/store";
 import { getInitialsTitle } from "@/utils/get-initials-title";
 
 import useEditProfileMutation from "@/services/auth/use-edit-profile-mutation";
@@ -22,7 +25,7 @@ const schema = yup
   .required();
 type EditProfileSchema = yup.InferType<typeof schema>;
 
-const EditProfileForm = ({ userData }: { userData: any }) => {
+const EditProfileForm = () => {
   const {
     register,
     handleSubmit,
@@ -32,6 +35,8 @@ const EditProfileForm = ({ userData }: { userData: any }) => {
     resolver: yupResolver(schema),
   });
   const { mutate: editProfile, isPending } = useEditProfileMutation();
+  const dispatch = useDispatch();
+  const userData = useSelector((state: RootState) => state.user.user); // get live user data from Redux
 
   const handleEditProfile: SubmitHandler<IHandleEditProfile> = (data) => {
     const { fullName, phone, address } = data;
@@ -42,6 +47,7 @@ const EditProfileForm = ({ userData }: { userData: any }) => {
     if (address) formData.set("address", address);
 
     editProfile(formData);
+    dispatch(setUser({ fullName, phone, address }));
   };
 
   useEffect(() => {
@@ -57,8 +63,8 @@ const EditProfileForm = ({ userData }: { userData: any }) => {
   return (
     <div className="flex w-full flex-col items-center justify-center">
       <div className="mb-4 flex w-full flex-col items-center justify-center gap-4">
-        <div className="flex size-40 items-center justify-center rounded-full border border-core-primary-light">
-          {getInitialsTitle(userData?.fullName)}
+        <div className="flex size-40 items-center justify-center rounded-full border border-core-primary-light text-4xl tracking-widest">
+          {userData && getInitialsTitle(userData?.fullName)}
         </div>
         <span className="text-2xl font-semibold">{userData?.fullName}</span>
       </div>

@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import toast from "react-hot-toast";
@@ -13,16 +14,22 @@ interface AddProductApiParams {
 interface AddProductMutationProps {
   reset: () => void;
   toggleDrawer?: () => void;
+  setImage: Dispatch<SetStateAction<File[]>>;
 }
 
 const addProductApi = async ({ data }: AddProductApiParams) => {
-  const response = await http.post("/api/sellers/products", data);
+  for (const [key, value] of data.entries()) {
+    console.log(`${key}:`, value);
+  }
+
+  const response = await http.post("/sellers/products", data);
   return response.data;
 };
 
 const useAddProductMutation = ({
   reset,
   toggleDrawer,
+  setImage,
 }: AddProductMutationProps) => {
   const queryClient = useQueryClient();
 
@@ -31,7 +38,10 @@ const useAddProductMutation = ({
 
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ["products"] });
+      queryClient.invalidateQueries({ queryKey: ["seller-products"] });
       reset();
+      setImage([]);
+
       if (toggleDrawer) toggleDrawer();
       toast.success(data?.message || "Product successfully added");
     },
