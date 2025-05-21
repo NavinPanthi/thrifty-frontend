@@ -7,7 +7,7 @@ import SignUpForm from "@/components/auth/signup-form";
 
 import useSignUpMutation from "@/services/auth/use-signup-mutation";
 
-// const roles = ["admin", "user", "seller"] as const;
+const roles = ["admin", "user", "seller"] as const;
 
 // export type roleType = (typeof roles)[number];
 
@@ -18,6 +18,7 @@ export interface IHandleSignUp {
   profilePicture?: string;
   phone: string;
   address: string;
+  roles?: string[];
 }
 
 const SignUp = () => {
@@ -32,11 +33,12 @@ const SignUp = () => {
     formData.append("phone", phone);
     formData.append("address", address);
 
-    // const roles = [];
-    // if (isSignUpAsSeller) {
-    //   roles.push("seller");
-    //   formData.append("roles", roles);
-    // }
+    const roles: string[] = [];
+    if (isSignUpAsSeller) {
+      roles.push("seller");
+    }
+    roles.forEach((role) => formData.append("roles", role));
+
     signUp(formData);
   };
   const handleSignUpAsSeller = () => {
