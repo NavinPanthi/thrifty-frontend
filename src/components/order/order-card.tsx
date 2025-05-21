@@ -2,6 +2,7 @@ import dayjs from "dayjs";
 
 import { getUserData } from "@/utils/auth-storage";
 import { checkSeller } from "@/utils/check-seller";
+import { checkUser } from "@/utils/check-user";
 
 import Button from "../ui/button";
 
@@ -18,6 +19,8 @@ const OrderDetail = ({
   const isOrderPending =
     order?.orderStatus === "pending" && checkSeller(userData);
 
+  const isPaymentPending =
+    order?.orderStatus === "pending" && checkUser(userData);
   const { mutate: completeOrder, isPending } =
     useCompleteOrderMutation(closeModal);
 
@@ -73,6 +76,15 @@ const OrderDetail = ({
             onClick={() => handleCompleteOrder(order?.id)}
           >
             Complete Order
+          </Button>
+        )}
+        {isPaymentPending && (
+          <Button
+            disabled={isPending}
+            type="submit"
+            onClick={() => handleCompleteOrder(order?.id)}
+          >
+            Complete Payment
           </Button>
         )}
       </div>

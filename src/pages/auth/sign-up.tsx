@@ -18,7 +18,6 @@ export interface IHandleSignUp {
   profilePicture?: string;
   phone: string;
   address: string;
-  roles: string[];
 }
 
 const SignUp = () => {

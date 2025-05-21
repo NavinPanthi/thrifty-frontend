@@ -1,6 +1,7 @@
 import {
   BarCode01Icon,
   HugeiconsProps,
+  Message01Icon,
   UserAccountIcon,
 } from "hugeicons-react";
 
@@ -24,5 +25,11 @@ export const adminLinks: INavigation[] = [
     name: "Users",
     path: "/admin/users",
     icon: UserAccountIcon,
+  },
+  {
+    id: "Chat",
+    name: "Chat",
+    path: "/admin/chat",
+    icon: Message01Icon,
   },
 ];

@@ -22,22 +22,8 @@ http.interceptors.request.use(
   }
 );
 
-http.interceptors.response.use(
-  function (response) {
-    return response;
-  }
-
-  // function (error) {
-  //   if (
-  //     error.config.url !== "/admin/dashboard" &&
-  //     error.config.url !== "/admin/auth/login"
-  //   ) {
-  //     resetLoginData();
-  //     window.location.href = "/log-in";
-  //   }
-
-  //   return Promise.reject(error);
-  // }
-);
+http.interceptors.response.use(function (response) {
+  return response;
+});
 
 export default http;

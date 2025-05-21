@@ -1,8 +1,12 @@
 import { lazy } from "react";
 
+import AdminChatPage from "@/pages/admin/admin-chat-page";
 import AdminProductsPage from "@/pages/admin/products/admin-products-page";
 import ProductDetailAdminPage from "@/pages/admin/products/product-detail-page";
 import UsersPage from "@/pages/admin/users/users-page";
+import SellerProfilePage from "@/pages/seller/profile";
+import SellerChangePassword from "@/pages/seller/profile/seller-change-password";
+import SellerProfile from "@/features/seller/profile";
 
 const Dashboard = lazy(() => import("@/pages/admin/dashboard"));
 
@@ -56,7 +60,25 @@ const adminRoutes: IAdminRoutes[] = [
   {
     id: "users-page",
     path: "/admin/change-password",
-    component: UsersPage,
+    component: SellerChangePassword,
+    meta: {
+      adminLayout: true,
+      privateRoute: true,
+    },
+  },
+  {
+    id: "users-page",
+    path: "/admin/profile",
+    component: SellerProfilePage,
+    meta: {
+      adminLayout: true,
+      privateRoute: true,
+    },
+  },
+  {
+    id: "users-page",
+    path: "/admin/chat",
+    component: AdminChatPage,
     meta: {
       adminLayout: true,
       privateRoute: true,

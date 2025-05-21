@@ -3,13 +3,11 @@ import { useMutation } from "@tanstack/react-query";
 
 import toast from "react-hot-toast";
 
-import { IHandleSignUp } from "@/pages/auth/sign-up";
-
 import http from "@/lib/http";
 
 import { ApiError } from "@/@types/apiError";
 
-const SignUpApi = async (data: IHandleSignUp) => {
+const SignUpApi = async (data: FormData) => {
   const response = await http.post(`/public/register`, data);
   return { ...response.data };
 };

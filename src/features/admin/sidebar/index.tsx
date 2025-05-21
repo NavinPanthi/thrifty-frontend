@@ -2,7 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useQueryClient } from "@tanstack/react-query";
 import { useDispatch } from "react-redux";
 
-import { Logout01Icon } from "hugeicons-react";
+import { Logout01Icon, UserAccountIcon } from "hugeicons-react";
 import toast from "react-hot-toast";
 
 import Button from "@/components/ui/button";
@@ -60,64 +60,68 @@ const AdminSidebar = ({ className }: { className: string }) => {
           );
         })}
       </div>
-      {/* <Link
-        to="/admin/profile"
-        className={cn(
-          "mt-auto flex items-center gap-2 rounded-lg px-[10px] py-[9px] shadow transition-colors hover:rounded-lg",
-          {
-            "bg-shade-light text-core-primary":
-              pathname.includes("/admin/profile".split("?")[0]) ||
-              pathname.includes("/admin/profile"),
-            "text-shade-light/70 hover:bg-neutral-50 hover:text-core-primary hover:ease-linear":
-              !pathname.includes("/admin/profile".split("?")[0]) ||
-              !pathname.includes("/admin/profile"),
-          }
-        )}
-      >
-        <div className="flex size-10 items-center justify-center rounded-full border border-shade-light shadow-lg">
-          {getInitialsTitle(userData?.fullName)}
-        </div>
-        <span>{userData?.fullName}</span>
-      </Link> */}
-      {/* <Button
-        className="mt-auto"
-        LeftIcon={Logout01Icon}
-        onClick={handleLogout}
-      >
 
-        Log out
-      </Button> */}
-      <Popup
-        button={
-          <p className="rounded-full border border-shade-light p-2">
-            {getInitialsTitle(userData?.fullName)}
-          </p>
-        }
-        className="py-2"
-      >
-        <div className="flex flex-col gap-2 rounded-lg">
-          <Button
-            rounded="sm"
-            type="button"
-            variant="tertiary"
-            // LeftIcon={Profile02Icon}
-          >
-            Profile
-          </Button>
-          <Button
-            rounded="sm"
-            type="button"
-            className="text-nowrap"
-            variant="danger"
-            LeftIcon={Logout01Icon}
-            // onClick={() => {
-            //   setIsModal(true);
-            // }}
-          >
-            Log out
-          </Button>
-        </div>
-      </Popup>
+      <div className="mt-auto w-full">
+        <Popup
+          className="!right-2 !mt-[-240px] border !border-shade-light !bg-core-primary text-shade-light shadow-2xl"
+          buttonClassName="w-full"
+          button={
+            <div
+              className={cn(
+                "mt-4 flex items-center gap-2 rounded-lg px-[10px] py-[9px] shadow transition-colors hover:rounded-lg"
+              )}
+            >
+              <div className="flex size-10 items-center justify-center rounded-full border border-shade-light shadow-lg">
+                {userData && getInitialsTitle(userData?.fullName)}
+              </div>
+              <span>{userData?.fullName}</span>
+            </div>
+          }
+        >
+          <div>
+            <Link
+              to="/admin/profile"
+              className={cn(
+                "mt-4 flex items-center gap-2 rounded-lg px-[10px] py-[9px] shadow transition-colors hover:rounded-lg",
+                {
+                  "bg-shade-light text-core-primary":
+                    pathname.includes("/admin/profile".split("?")[0]) ||
+                    pathname.includes("/admin/profile"),
+                  "text-shade-light/70 hover:bg-neutral-50 hover:text-core-primary hover:ease-linear":
+                    !pathname.includes("/admin/profile".split("?")[0]) ||
+                    !pathname.includes("/admin/profile"),
+                }
+              )}
+            >
+              <UserAccountIcon /> <p>Profile</p>
+            </Link>
+            <Link
+              to="/admin/change-password"
+              className={cn(
+                "mt-2 flex items-center gap-2 rounded-lg px-[10px] py-[9px] shadow transition-colors hover:rounded-lg",
+                {
+                  "bg-shade-light text-core-primary":
+                    pathname.includes("/admin/change-password".split("?")[0]) ||
+                    pathname.includes("/admin/change-password"),
+                  "text-shade-light/70 hover:bg-neutral-50 hover:text-core-primary hover:ease-linear":
+                    !pathname.includes(
+                      "/admin/change-password".split("?")[0]
+                    ) || !pathname.includes("/admin/change-password"),
+                }
+              )}
+            >
+              <UserAccountIcon /> <p>Change Password</p>
+            </Link>
+            <Button
+              className="my-2 flex w-full justify-start px-[10px] py-[9px] text-shade-light/70 shadow transition-colors hover:rounded-lg hover:bg-neutral-50 hover:text-core-primary hover:ease-linear"
+              LeftIcon={Logout01Icon}
+              onClick={handleLogout}
+            >
+              Log out
+            </Button>
+          </div>
+        </Popup>
+      </div>
     </div>
   );
 };

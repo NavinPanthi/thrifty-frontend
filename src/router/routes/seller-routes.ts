@@ -4,6 +4,7 @@ import SellerOrdersPage from "@/pages/seller/orders/seller-orders-page";
 import ProductDetailSellerPage from "@/pages/seller/products/product-detail-page";
 import SellerProductsPage from "@/pages/seller/products/seller-products-page";
 import SellerProfilePage from "@/pages/seller/profile";
+import SellerChangePassword from "@/pages/seller/profile/seller-change-password";
 
 const Dashboard = lazy(() => import("@/pages/seller/dashboard"));
 
@@ -57,6 +58,14 @@ const SellerRoutes: ISellerRoutes[] = [
     id: "product-detail",
     path: "/product/:id",
     component: ProductDetailSellerPage,
+    meta: {
+      privateRoute: true,
+    },
+  },
+  {
+    id: "change-password",
+    path: "/seller/change-password",
+    component: SellerChangePassword,
     meta: {
       privateRoute: true,
     },

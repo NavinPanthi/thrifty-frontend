@@ -2,13 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useQueryClient } from "@tanstack/react-query";
 import { useDispatch, useSelector } from "react-redux";
 
-import {
-  Logout01Icon,
-  Profile02Icon,
-  ProfileIcon,
-  UserAccountIcon,
-  UserBlock01Icon,
-} from "hugeicons-react";
+import { Logout01Icon, UserAccountIcon } from "hugeicons-react";
 import toast from "react-hot-toast";
 
 import Button from "@/components/ui/button";
@@ -70,7 +64,7 @@ const SellerSidebar = ({ className }: { className: string }) => {
       </div>
       <div className="mt-auto w-full">
         <Popup
-          className="border !border-shade-light !bg-core-primary text-shade-light shadow-2xl"
+          className="!right-2 !mt-[-240px] border !border-shade-light !bg-core-primary text-shade-light shadow-2xl"
           buttonClassName="w-full"
           button={
             <div
