@@ -8,12 +8,46 @@ import Button from "@/components/ui/button";
 import PlaceOrderModal from "../order/place-order-modal";
 
 import useGetCartItemsQuery from "@/services/user/cart/use-get-cart-items";
+import useAddCartItemMutation from "@/services/user/products/sue-add-cart-item-mutation";
+import useRemoveCartItemMutation from "@/services/user/use-remove-cart-mutation";
+import useSubtractCartItemMutation from "@/services/user/use-subtract-item-mutation";
 
 const Cart = () => {
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
   const { data: cartItems, isLoading, refetch } = useGetCartItemsQuery();
-  console.log(cartItems);
+
   const navigate = useNavigate();
+
+  const { mutate: deleteCart, isPending: isDeletePending } =
+    useRemoveCartItemMutation();
+  const { mutate: subtractCart, isPending: isSubtractPending } =
+    useSubtractCartItemMutation();
+  const { mutate: addCart, isPending: isAddPending } = useAddCartItemMutation();
+
+  const handleDeleteCart = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    id: string | number
+  ) => {
+    e.stopPropagation();
+    deleteCart(id);
+  };
+
+  const handleSubtractCart = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    id: string | number
+  ) => {
+    e.stopPropagation();
+    subtractCart(id);
+  };
+
+  const handleAddCart = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    id: string | number
+  ) => {
+    e.stopPropagation();
+    addCart(id);
+  };
+
   useEffect(() => {
     refetch();
   }, []);
@@ -70,7 +104,8 @@ const Cart = () => {
                 <div className="mt-2 flex items-center gap-2">
                   <button
                     className="rounded border p-1 hover:bg-gray-100"
-                    onClick={(e) => e.stopPropagation()}
+                    onClick={(e) => handleSubtractCart(e, item.id)}
+                    disabled={isSubtractPending}
                   >
                     <MinusSignIcon size={16} />
                   </button>
@@ -79,14 +114,16 @@ const Cart = () => {
 
                   <button
                     className="rounded border p-1 hover:bg-gray-100"
-                    onClick={(e) => e.stopPropagation()}
+                    onClick={(e) => handleAddCart(e, item.id)}
+                    disabled={isAddPending}
                   >
                     <PlusSignIcon size={16} />
                   </button>
 
                   <button
                     className="ml-auto p-1 text-red-500 hover:text-red-700"
-                    onClick={(e) => e.stopPropagation()}
+                    onClick={(e) => handleDeleteCart(e, item.id)}
+                    disabled={isDeletePending}
                   >
                     <Delete01Icon />
                   </button>
