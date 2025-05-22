@@ -42,7 +42,12 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, ref) => {
       />
 
       {isPasswordInput && (
-        <div className="absolute right-0 top-1/2 w-8 -translate-y-1/2 cursor-pointer">
+        <div
+          className={cn(
+            "absolute right-0 top-1/2 w-8 -translate-y-1/2 cursor-pointer",
+            { "top-1/3": isPasswordInput && errorMsg }
+          )}
+        >
           {isPasswordShown ? (
             <ViewOffIcon width={22} onClick={() => setIsPasswordShown(false)} />
           ) : (
