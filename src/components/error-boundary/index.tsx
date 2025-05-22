@@ -1,11 +1,8 @@
 import { useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 import { useErrorBoundary } from "react-error-boundary";
 
-import { IUserState } from "@/redux/slices/user-slice";
-import { RootState } from "@/redux/store";
 import { getUserData } from "@/utils/auth-storage";
 import { checkAdmin } from "@/utils/check-admin";
 import { checkSeller } from "@/utils/check-seller";
@@ -21,9 +18,9 @@ function ErrorBoundary() {
     const userData = getUserData();
     navigate(
       checkAdmin(userData)
-        ? "/admin/dashboard"
+        ? "/admin/products"
         : checkSeller(userData)
-          ? "/seller/dashboard"
+          ? "/seller/products"
           : "/",
       {
         replace: true,

@@ -45,7 +45,7 @@ const SignUp = () => {
     setIsSignUpAsSeller(!isSignUpAsSeller);
   };
   return (
-    <AuthSignUpLayout>
+  <AuthSignUpLayout>
       <SignUpForm
         handleSignUp={handleSignUp}
         isPending={isPending}

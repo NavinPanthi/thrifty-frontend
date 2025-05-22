@@ -1,14 +1,9 @@
-import { lazy } from "react";
-
 import AdminChatPage from "@/pages/admin/admin-chat-page";
 import AdminProductsPage from "@/pages/admin/products/admin-products-page";
 import ProductDetailAdminPage from "@/pages/admin/products/product-detail-page";
 import UsersPage from "@/pages/admin/users/users-page";
 import SellerProfilePage from "@/pages/seller/profile";
 import SellerChangePassword from "@/pages/seller/profile/seller-change-password";
-import SellerProfile from "@/features/seller/profile";
-
-const Dashboard = lazy(() => import("@/pages/admin/dashboard"));
 
 interface IAdminRoutes {
   id: string;
@@ -21,16 +16,7 @@ interface IAdminRoutes {
 }
 const adminRoutes: IAdminRoutes[] = [
   {
-    id: "admin-dashboard",
-    path: `admin/dashboard`,
-    component: Dashboard,
-    meta: {
-      adminLayout: true,
-      privateRoute: true,
-    },
-  },
-  {
-    id: "admin-dashboard",
+    id: "admin-products",
     path: `admin/products`,
     component: AdminProductsPage,
     meta: {

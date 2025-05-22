@@ -2,8 +2,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import {
+  ClipboardIcon,
   Logout01Icon,
   Profile02Icon,
+  ResetPasswordIcon,
   ShoppingCart01Icon,
   UserIcon,
 } from "hugeicons-react";
@@ -80,20 +82,46 @@ const Navbar = () => {
           }
           className="py-2"
         >
-          <div className="flex flex-col gap-2 rounded-lg">
+          <div className="flex min-w-fit flex-col gap-1 rounded-lg">
+            <Button
+              rounded="sm"
+              type="button"
+              variant="tertiary"
+              LeftIcon={ClipboardIcon}
+              size="sm"
+              className="justify-start text-nowrap"
+              onClick={() => navigate("/orders")}
+            >
+              My orders
+            </Button>
             <Button
               rounded="sm"
               type="button"
               variant="tertiary"
               LeftIcon={Profile02Icon}
+              size="sm"
+              className="justify-start"
+              onClick={() => navigate("/profile")}
             >
               Profile
             </Button>
             <Button
               rounded="sm"
               type="button"
-              className="text-nowrap"
+              variant="tertiary"
+              size="sm"
+              LeftIcon={ResetPasswordIcon}
+              className="justify-start text-nowrap"
+              onClick={() => navigate("/change-password")}
+            >
+              Change password
+            </Button>
+            <Button
+              rounded="sm"
+              type="button"
               variant="danger"
+              size="sm"
+              className="justify-start text-nowrap"
               LeftIcon={Logout01Icon}
               onClick={() => {
                 setIsModal(true);

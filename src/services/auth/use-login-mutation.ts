@@ -42,9 +42,9 @@ const useLoginMutation = () => {
       toast.success(data?.message || "Login successful");
       navigate(
         checkAdmin(data?.data)
-          ? "/admin/dashboard"
+          ? "/admin/products"
           : checkSeller(data?.data)
-            ? "/seller/dashboard"
+            ? "/seller/products"
             : "/",
         { replace: true }
       );

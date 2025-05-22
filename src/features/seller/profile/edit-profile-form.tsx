@@ -19,8 +19,8 @@ import useEditProfileMutation from "@/services/auth/use-edit-profile-mutation";
 const schema = yup
   .object({
     fullName: yup.string().required("Full name is required."),
-    phone: yup.string(),
-    address: yup.string(),
+    phone: yup.string().optional(),
+    address: yup.string().optional(),
   })
   .required();
 type EditProfileSchema = yup.InferType<typeof schema>;

@@ -4,9 +4,11 @@ import AboutPage from "@/pages/landing/about";
 import ContactPage from "@/pages/landing/contact";
 import ShopPage from "@/pages/landing/shop";
 import CartPage from "@/pages/user/cart";
+import ChangePasswordFormPage from "@/pages/user/change-password-form";
 import OrderPage from "@/pages/user/order/order";
 import PaymentPage from "@/pages/user/payment-page";
 import ProductDetailUserPage from "@/pages/user/product-detail-page";
+import UserProfilePage from "@/pages/user/user-profile-page";
 
 const Landing = lazy(() => import("@/pages/landing/landing"));
 interface IUserRoutes {
@@ -90,6 +92,24 @@ const userRoutes: IUserRoutes[] = [
     id: "payment",
     path: "/payment",
     component: PaymentPage,
+    meta: {
+      userLayout: true,
+      privateRoute: true,
+    },
+  },
+  {
+    id: "profile",
+    path: "/profile",
+    component: UserProfilePage,
+    meta: {
+      userLayout: true,
+      privateRoute: true,
+    },
+  },
+  {
+    id: "change-password",
+    path: "/change-password",
+    component: ChangePasswordFormPage,
     meta: {
       userLayout: true,
       privateRoute: true,

@@ -2,7 +2,11 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useQueryClient } from "@tanstack/react-query";
 import { useDispatch } from "react-redux";
 
-import { Logout01Icon, UserAccountIcon } from "hugeicons-react";
+import {
+  Logout01Icon,
+  ResetPasswordIcon,
+  UserAccountIcon,
+} from "hugeicons-react";
 import toast from "react-hot-toast";
 
 import Button from "@/components/ui/button";
@@ -30,7 +34,7 @@ const AdminSidebar = ({ className }: { className: string }) => {
     <div className={cn(className, "flex flex-col")}>
       <Link
         className="leading border border-shade-light px-10 py-3 text-3xl uppercase"
-        to="/admin/dashboard"
+        to="/admin/products"
       >
         Thrifty
       </Link>
@@ -110,7 +114,8 @@ const AdminSidebar = ({ className }: { className: string }) => {
                 }
               )}
             >
-              <UserAccountIcon /> <p>Change Password</p>
+              <ResetPasswordIcon />
+              <p>Change Password</p>
             </Link>
             <Button
               className="my-2 flex w-full justify-start px-[10px] py-[9px] text-shade-light/70 shadow transition-colors hover:rounded-lg hover:bg-neutral-50 hover:text-core-primary hover:ease-linear"

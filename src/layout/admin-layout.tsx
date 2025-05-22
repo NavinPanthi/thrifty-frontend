@@ -18,7 +18,7 @@ function AdminLayout({ children }: { children: React.ReactNode }) {
   }
 
   if ((loginStatus && pathname === "/") || pathname === "/admin") {
-    return <Navigate to="/admin/dashboard" />;
+    return <Navigate to="/admin/products" />;
   }
 
   return (

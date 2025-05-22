@@ -3,7 +3,7 @@ import { useState } from "react";
 import Button from "../../components/ui/button";
 import SearchInput from "../../components/ui/search-input";
 
-const Home = ({ title }) => {
+const Home = () => {
   const [search, setSearch] = useState("");
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);

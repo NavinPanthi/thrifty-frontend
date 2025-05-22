@@ -33,7 +33,7 @@ const SellerSidebar = ({ className }: { className: string }) => {
     <div className={cn(className, "flex flex-col")}>
       <Link
         className="leading border border-shade-light px-10 py-3 text-3xl uppercase"
-        to="/seller/dashboard"
+        to="/seller/products"
       >
         Thrifty
       </Link>
